@@ -13,7 +13,7 @@ export const sendMessageHeaders = z.object({
  * Todo:
  *
  * - This should return the response source documents
- * - This could return the chat title based on user prompt
+ * - This should return the chat title and ID based on user prompt
  */
 export const sendMessageResponse = z.any()
 

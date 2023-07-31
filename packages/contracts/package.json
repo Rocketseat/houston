@@ -1,10 +1,12 @@
 {
   "name": "@rocketseat/houston-contracts",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --dts"
+    "build": "tsup src/index.ts --dts --format esm,cjs"
   },
   "dependencies": {
     "zod": "3.21.4"
