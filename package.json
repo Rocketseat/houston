@@ -1,0 +1,27 @@
+{
+  "name": "houston",
+  "version": "0.0.1",
+  "description": "AI platform.",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "2.26.2",
+    "@rocketseat/eslint-config": "2.1.0",
+    "@types/node": "20.4.5",
+    "eslint": "8.46.0",
+    "tsup": "7.1.0",
+    "turbo": "1.10.12",
+    "typescript": "5.1.6",
+    "vitest": "0.33.0"
+  }
+}
