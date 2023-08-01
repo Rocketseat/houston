@@ -1,0 +1,9 @@
+{
+  "name": "@houston/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "20.4.5",
+    "typescript": "5.1.6"
+  }
+}
