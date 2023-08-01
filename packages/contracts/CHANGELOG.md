@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.1.4
+
+### Patch Changes
+
+- create dedicated schema to pagination request and response
+
 ## 0.1.3
 
 ### Patch Changes

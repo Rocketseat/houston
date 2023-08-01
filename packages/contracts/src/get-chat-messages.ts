@@ -1,21 +1,21 @@
 import { z } from 'zod'
+import { paginatedRequest } from './utils/paginated-request'
+import { paginatedResponse } from './utils/paginated-response'
 
-export const getChatMessagesParams = z.object({
-  pageIndex: z.number().default(0),
-  pageSize: z.number().default(5),
-})
+export const getChatMessagesParams = z.object({}).merge(paginatedRequest)
 
-export const getChatMessagesResponse = z.object({
-  totalCount: z.number(),
-  messages: z.array(
-    z.object({
-      id: z.string(),
-      role: z.enum(['assistant', 'user']),
-      text: z.string(),
-      createdAt: z.date(),
-    }),
-  ),
-})
+export const getChatMessagesResponse = z
+  .object({
+    messages: z.array(
+      z.object({
+        id: z.string(),
+        role: z.enum(['assistant', 'user']),
+        text: z.string(),
+        createdAt: z.date(),
+      }),
+    ),
+  })
+  .merge(paginatedResponse)
 
 export type GetChatMessagesParams = z.infer<typeof getChatMessagesParams>
 
