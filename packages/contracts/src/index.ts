@@ -7,14 +7,21 @@ export {
   SendMessageResponse,
 } from './send-message'
 
-export type {
+export {
+  getChatByIdParams,
+  getChatByIdResponse,
+  GetChatByIdParams,
+  GetChatByIdResponse,
+} from './get-chat-by-id'
+
+export {
   getRecentChatsParams,
   getRecentChatsResponse,
   GetRecentChatsParams,
   GetRecentChatsResponse,
 } from './get-recent-chats'
 
-export type {
+export {
   getChatMessagesParams,
   getChatMessagesResponse,
   GetChatMessagesParams,
