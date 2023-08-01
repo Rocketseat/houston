@@ -1,9 +1,12 @@
-# RFs
+# Houston
 
-- Send message
-  - Current Jupiter lesson should be sent via header
-  - If `chatId` is not informed, create a new one
-- Search recent chats
-  - Full text search
-  - Does this have pagination?
-  - How the current chat is determined?
+Rocketseat platform for semantic search and AI chatbot.
+
+## Development
+
+To-do...
+
+## Packages
+
+- `packages/contracts`: Typings and Zod schemas for all Houston requests/responses;
+- `packages/api`: Houston Web API, which offers HTTP endpoints;
