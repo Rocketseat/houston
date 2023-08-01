@@ -6,6 +6,7 @@ export const getChatMessagesParams = z.object({
 })
 
 export const getChatMessagesResponse = z.object({
+  totalCount: z.number(),
   messages: z.array(
     z.object({
       id: z.string(),

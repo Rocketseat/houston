@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.1.3
+
+### Patch Changes
+
+- add total count to pagination listings
+
 ## 0.1.2
 
 ### Patch Changes

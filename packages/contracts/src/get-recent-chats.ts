@@ -7,6 +7,7 @@ export const getRecentChatsParams = z.object({
 })
 
 export const getRecentChatsResponse = z.object({
+  totalCount: z.number(),
   chats: z.array(
     z.object({
       id: z.string(),
