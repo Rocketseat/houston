@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.1.5
+
+### Patch Changes
+
+- add response schema to send message
+
 ## 0.1.4
 
 ### Patch Changes

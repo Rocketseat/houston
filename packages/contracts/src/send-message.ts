@@ -15,7 +15,9 @@ export const sendMessageHeaders = z.object({
  * - This should return the response source documents
  * - This should return the chat title and ID based on user prompt
  */
-export const sendMessageResponse = z.any()
+export const sendMessageResponse = z
+  .instanceof(ReadableStream<string>)
+  .or(z.object({ status: z.literal('error'), message: z.string() }))
 
 export type SendMessageBody = z.infer<typeof sendMessageBody>
 
