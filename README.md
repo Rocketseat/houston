@@ -4,7 +4,10 @@ Rocketseat platform for semantic search and AI chatbot.
 
 ## Development
 
-To-do...
+- [ ] Chat memory
+- [x] Chat title
+- [ ] Detect abuses
+- [ ] Agent
 
 ## Packages
 

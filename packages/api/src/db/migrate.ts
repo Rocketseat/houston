@@ -10,7 +10,10 @@ const db = drizzle(client, {
   logger: false,
 })
 
-migrate(db, { migrationsFolder: './src/db/migrations' })
+migrate(db, {
+  migrationsFolder: './src/db/migrations',
+  migrationsTable: 'migrations',
+})
   .then(() => {
     console.log('Successfully applied all pending migrations.')
   })

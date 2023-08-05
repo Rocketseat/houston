@@ -1,9 +1,7 @@
 export {
   sendMessageBody,
-  sendMessageHeaders,
   sendMessageResponse,
   SendMessageBody,
-  SendMessageHeaders,
   SendMessageResponse,
 } from './send-message'
 
@@ -15,15 +13,17 @@ export {
 } from './get-chat-by-id'
 
 export {
-  getRecentChatsParams,
+  getRecentChatsQuery,
   getRecentChatsResponse,
-  GetRecentChatsParams,
+  GetRecentChatsQuery,
   GetRecentChatsResponse,
 } from './get-recent-chats'
 
 export {
   getChatMessagesParams,
+  getChatMessagesQuery,
   getChatMessagesResponse,
   GetChatMessagesParams,
+  GetChatMessagesQuery,
   GetChatMessagesResponse,
 } from './get-chat-messages'

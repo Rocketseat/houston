@@ -2,9 +2,9 @@ import { z } from 'zod'
 import { paginatedRequest } from './utils/paginated-request'
 import { paginatedResponse } from './utils/paginated-response'
 
-export const getRecentChatsParams = z
+export const getRecentChatsQuery = z
   .object({
-    search: z.string().optional(),
+    search: z.string().default(''),
   })
   .merge(paginatedRequest)
 
@@ -20,6 +20,6 @@ export const getRecentChatsResponse = z
   })
   .merge(paginatedResponse)
 
-export type GetRecentChatsParams = z.infer<typeof getRecentChatsParams>
+export type GetRecentChatsQuery = z.infer<typeof getRecentChatsQuery>
 
 export type GetRecentChatsResponse = z.infer<typeof getRecentChatsResponse>

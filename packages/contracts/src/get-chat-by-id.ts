@@ -5,13 +5,11 @@ export const getChatByIdParams = z.object({
 })
 
 export const getChatByIdResponse = z.object({
-  chat: z.array(
-    z.object({
-      id: z.string(),
-      title: z.string(),
-      createdAt: z.date(),
-    }),
-  ),
+  chat: z.object({
+    id: z.string(),
+    title: z.string(),
+    createdAt: z.date(),
+  }),
 })
 
 export type GetChatByIdParams = z.infer<typeof getChatByIdParams>

@@ -2,18 +2,25 @@
   "name": "@rocketseat/houston-api",
   "private": true,
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
     "migrate:gen": "drizzle-kit generate:pg",
     "migrate:push": "tsx src/db/migrate.ts",
-    "migrate": "run-s migrate:gen migrate:push"
+    "migrate": "run-s migrate:gen migrate:push",
+    "qdrant:seed": "tsx src/langchain/sample/seed.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.1.0",
     "@hono/zod-validator": "0.1.3",
+    "@qdrant/js-client-rest": "1.4.0",
     "@rocketseat/houston-contracts": "workspace:*",
+    "ai": "2.1.31",
     "dotenv": "16.3.1",
     "drizzle-orm": "0.27.2",
     "hono": "^3.3.4",
+    "jose": "4.14.4",
+    "langchain": "0.0.122",
+    "openai-edge": "1.2.2",
     "postgres": "3.3.5",
     "zod": "3.21.4"
   },
