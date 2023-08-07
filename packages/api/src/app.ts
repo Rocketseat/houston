@@ -9,6 +9,7 @@ import {
   getChatByIdParams,
   getChatMessagesParams,
   getChatMessagesQuery,
+  getRecentChatsQuery,
   sendMessageBody,
 } from '@rocketseat/houston-contracts'
 import { HTTPException } from 'hono/http-exception'
@@ -18,7 +19,15 @@ import { env } from './env'
 import { houston } from '@/langchain/chains/houston'
 import { Document } from 'langchain/document'
 import { textStream } from './util/http-stream'
-import { eq, ilike, sql } from 'drizzle-orm'
+import { between, eq, ilike, sql } from 'drizzle-orm'
+import { Ratelimit } from '@upstash/ratelimit' // for deno: see above
+import { Redis } from '@upstash/redis'
+import dayjs from 'dayjs'
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(20, '60 s'),
+})
 
 export const app = new Hono<{
   Variables: { atlasUserId: string }
@@ -47,6 +56,16 @@ app.use(async (c, next) => {
   return await next()
 })
 
+app.use(async (c, next) => {
+  const atlasUserId = c.get('atlasUserId')
+
+  if (env.NODE_ENV === 'production') {
+    await ratelimit.limit(atlasUserId)
+  }
+
+  return await next()
+})
+
 const routes = app
   .get('/', (c) => c.text('Hello'))
   .post('/messages', zValidator('json', sendMessageBody), async (c) => {
@@ -54,6 +73,29 @@ const routes = app
     const atlasUserId = c.get('atlasUserId')
 
     let currentChatId = chatId
+
+    const last24Hours = dayjs().subtract(24, 'hours').toDate()
+
+    const countMessagesResults = await db
+      .select({ amount: sql<number>`count(*)` })
+      .from(messages)
+      .innerJoin(chats, eq(chats.id, messages.chatId))
+      .where(eq(chats.atlasUserId, atlasUserId))
+      .where(between(messages.createdAt, last24Hours, new Date()))
+
+    const [{ amount }] = countMessagesResults
+
+    if (amount >= 100) {
+      return c.jsonT(
+        {
+          message:
+            'São permitidas até 100 mensagens por usuário por dia. Você poderá utilizar novamente após 24h. ',
+        },
+        {
+          status: 429,
+        },
+      )
+    }
 
     if (!currentChatId) {
       const [chat] = await db
@@ -137,7 +179,7 @@ const routes = app
     })
   })
   .get('/chats', async (c) => {
-    const { search, pageIndex, pageSize } = getRecentChatsParams.parse(
+    const { search, pageIndex, pageSize } = getRecentChatsQuery.parse(
       c.req.query(),
     )
 

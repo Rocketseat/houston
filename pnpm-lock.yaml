@@ -41,9 +41,18 @@ importers:
       '@rocketseat/houston-contracts':
         specifier: workspace:*
         version: link:../contracts
+      '@upstash/ratelimit':
+        specifier: 0.4.3
+        version: 0.4.3
+      '@upstash/redis':
+        specifier: 1.22.0
+        version: 1.22.0
       ai:
         specifier: 2.1.31
         version: 2.1.31(react@18.2.0)(solid-js@1.7.8)(svelte@4.1.2)(vue@3.3.4)
+      dayjs:
+        specifier: 1.11.9
+        version: 1.11.9
       dotenv:
         specifier: 16.3.1
         version: 16.3.1
@@ -58,7 +67,7 @@ importers:
         version: 4.14.4
       langchain:
         specifier: 0.0.122
-        version: 0.0.122(@qdrant/js-client-rest@1.4.0)
+        version: 0.0.122(@qdrant/js-client-rest@1.4.0)(@upstash/redis@1.22.0)
       openai-edge:
         specifier: 1.2.2
         version: 1.2.2
@@ -1200,6 +1209,31 @@ packages:
       eslint-visitor-keys: 3.4.2
     dev: true
 
+  /@upstash/core-analytics@0.0.6:
+    resolution: {integrity: sha512-cpPSR0XJAJs4Ddz9nq3tINlPS5aLfWVCqhhtHnXt4p7qr5+/Znlt1Es736poB/9rnl1hAHrOsOvVj46NEXcVqA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@upstash/redis': 1.22.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@upstash/ratelimit@0.4.3:
+    resolution: {integrity: sha512-Dsp9Mw09Flg28JRklKgFiCXqr3bqv8bbG0kgpUYoHjcgPPolFFyaYOj/I2HExvYLZiogl77NUavBoNvMOK0zUQ==}
+    dependencies:
+      '@upstash/core-analytics': 0.0.6
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@upstash/redis@1.22.0:
+    resolution: {integrity: sha512-sXoJDoEqqik0HbrNE7yRWckOySEFsoBxfRdCgOqkc0w6py19ZZG50SpGkDDEUXSnBqP8VgGYXhWAiBpqxrt5oA==}
+    dependencies:
+      isomorphic-fetch: 3.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@vitest/expect@0.33.0:
     resolution: {integrity: sha512-sVNf+Gla3mhTCxNJx+wJLDPp/WcstOe0Ksqz4Vec51MmgMth/ia0MGFEkIZmVGeTL5HtjYR4Wl/ZxBxBXZJTzQ==}
     dependencies:
@@ -1940,6 +1974,10 @@ packages:
   /damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -3492,6 +3530,15 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /isomorphic-fetch@3.0.0:
+    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
+    dependencies:
+      node-fetch: 2.6.12
+      whatwg-fetch: 3.6.17
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /jose@4.14.4:
     resolution: {integrity: sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==}
     dev: false
@@ -3591,7 +3638,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /langchain@0.0.122(@qdrant/js-client-rest@1.4.0):
+  /langchain@0.0.122(@qdrant/js-client-rest@1.4.0)(@upstash/redis@1.22.0):
     resolution: {integrity: sha512-M/w6CZH+Y12jrts5ENFLpQF3ZzwI6bluubeL0wjyqz/btd8puXsHyyyt58bKg8bIMZF02Y2Tjr1qyqKQKTaJ0Q==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3785,6 +3832,7 @@ packages:
     dependencies:
       '@anthropic-ai/sdk': 0.5.10
       '@qdrant/js-client-rest': 1.4.0(typescript@5.1.6)
+      '@upstash/redis': 1.22.0
       ansi-styles: 5.2.0
       binary-extensions: 2.2.0
       camelcase: 6.3.0
@@ -5777,6 +5825,10 @@ packages:
   /webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
     dev: true
+
+  /whatwg-fetch@3.6.17:
+    resolution: {integrity: sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ==}
+    dev: false
 
   /whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}

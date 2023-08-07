@@ -11,6 +11,9 @@
     "qdrant",
     "Qdrant",
     "QDRANT",
+    "ratelimit",
+    "Ratelimit",
+    "upstash",
     "vectorstores"
   ]
 }
