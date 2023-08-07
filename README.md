@@ -4,7 +4,7 @@ Rocketseat platform for semantic search and AI chatbot.
 
 ## Development
 
-- [ ] Chat memory
+- [x] Chat memory
 - [x] Chat title
 - [x] Rate limit
 - [ ] Agent

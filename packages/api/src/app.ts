@@ -16,16 +16,18 @@ import { HTTPException } from 'hono/http-exception'
 import { importSPKI, jwtVerify } from 'jose'
 import { z } from 'zod'
 import { env } from './env'
-import { houston } from '@/langchain/chains/houston'
 import { Document } from 'langchain/document'
 import { textStream } from './util/http-stream'
-import { between, eq, ilike, sql } from 'drizzle-orm'
+import { asc, between, eq, ilike, sql } from 'drizzle-orm'
 import { Ratelimit } from '@upstash/ratelimit' // for deno: see above
 import { Redis } from '@upstash/redis'
 import dayjs from 'dayjs'
+import { Memory, createChainFromMemories } from './langchain/chains/houston'
+
+const redis = Redis.fromEnv()
 
 const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
+  redis,
   limiter: Ratelimit.slidingWindow(20, '60 s'),
 })
 
@@ -74,18 +76,13 @@ const routes = app
 
     let currentChatId = chatId
 
-    const last24Hours = dayjs().subtract(24, 'hours').toDate()
+    const today = dayjs().format('YYYY-MM-DD')
+    const userDailyMessageCountRedisKey = `user:${atlasUserId}:${today}`
 
-    const countMessagesResults = await db
-      .select({ amount: sql<number>`count(*)` })
-      .from(messages)
-      .innerJoin(chats, eq(chats.id, messages.chatId))
-      .where(eq(chats.atlasUserId, atlasUserId))
-      .where(between(messages.createdAt, last24Hours, new Date()))
+    const result = await redis.get(userDailyMessageCountRedisKey)
+    const amountOfMessagesToday = Number(result) ?? 0
 
-    const [{ amount }] = countMessagesResults
-
-    if (amount >= 100) {
+    if (amountOfMessagesToday >= 100) {
       return c.jsonT(
         {
           message:
@@ -97,6 +94,8 @@ const routes = app
       )
     }
 
+    let conversationMemory: Memory[] = []
+
     if (!currentChatId) {
       const [chat] = await db
         .insert(chats)
@@ -104,6 +103,12 @@ const routes = app
         .returning()
 
       currentChatId = chat.id
+    } else {
+      conversationMemory = await db
+        .select({ role: messages.role, text: messages.text })
+        .from(messages)
+        .where(eq(messages.chatId, currentChatId))
+        .orderBy(asc(messages.createdAt))
     }
 
     const [{ dialogChatId }] = await db
@@ -115,22 +120,36 @@ const routes = app
       })
       .returning({ dialogChatId: messages.chatId })
 
+    const amountOfSecondsUntilTheEndOfTheDay = dayjs()
+      .endOf('day')
+      .diff(new Date(), 'seconds')
+
+    await redis.set(userDailyMessageCountRedisKey, amountOfMessagesToday + 1, {
+      ex: amountOfSecondsUntilTheEndOfTheDay,
+      // this will set the expiry only once per key
+      nx: true,
+    })
+
     return textStream(
       async (stream) => {
-        const response = await houston.call({ query: text }, [
+        const houston = createChainFromMemories(conversationMemory)
+
+        const response = await houston.call({ question: text }, [
           {
             handleLLMNewToken(token) {
               stream.writeJson({ token })
             },
             handleChainEnd(response) {
-              const source =
-                response?.sourceDocuments.map((document: Document) => {
-                  const { jupiterId, title } = document.metadata
+              if (response.sourceDocuments) {
+                const source =
+                  response.sourceDocuments.map((document: Document) => {
+                    const { jupiterId, title } = document.metadata
 
-                  return { jupiterId, title }
-                }) ?? []
+                    return { jupiterId, title }
+                  }) ?? []
 
-              stream.writeJson({ source })
+                stream.writeJson({ source })
+              }
             },
           },
         ])
