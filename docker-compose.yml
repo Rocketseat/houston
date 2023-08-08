@@ -1,6 +1,19 @@
 version: '3.7'
 
 services:
+  postgres:
+    container_name: houston_pg
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: houston
+      PGDATA: /data/postgres
+    volumes:
+       - ./data/pg_storage:/data/postgres
+
   qdrant:
     container_name: houston_qdrant
     image: qdrant/qdrant
