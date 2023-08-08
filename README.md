@@ -7,8 +7,13 @@ Rocketseat platform for semantic search and AI chatbot.
 - [x] Chat memory
 - [x] Chat title
 - [x] Rate limit
-- [ ] Agent
 - [ ] Kafka
+
+### Out of beta
+
+- [ ] Lesson context
+- [ ] Semantic Cache
+- [ ] Better memory
 
 ## Packages
 

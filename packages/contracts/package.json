@@ -6,7 +6,8 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "dependencies": {
     "zod": "3.21.4"

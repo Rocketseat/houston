@@ -12,17 +12,16 @@ import {
   getRecentChatsQuery,
   sendMessageBody,
 } from '@rocketseat/houston-contracts'
+import { createChainFromMemories, Document } from '@houston/langchain'
 import { HTTPException } from 'hono/http-exception'
 import { importSPKI, jwtVerify } from 'jose'
 import { z } from 'zod'
 import { env } from './env'
-import { Document } from 'langchain/document'
 import { textStream } from './util/http-stream'
-import { asc, between, eq, ilike, sql } from 'drizzle-orm'
-import { Ratelimit } from '@upstash/ratelimit' // for deno: see above
+import { asc, eq, ilike, sql } from 'drizzle-orm'
+import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 import dayjs from 'dayjs'
-import { Memory, createChainFromMemories } from './langchain/chains/houston'
 
 const redis = Redis.fromEnv()
 
@@ -96,7 +95,10 @@ const routes = app
       )
     }
 
-    let conversationMemory: Memory[] = []
+    let conversationMemory: Array<{
+      role: 'user' | 'assistant'
+      text: string
+    }> = []
 
     if (!currentChatId) {
       const [chat] = await db
