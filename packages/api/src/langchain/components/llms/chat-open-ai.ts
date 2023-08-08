@@ -5,5 +5,5 @@ export const openAiChat = new ChatOpenAI({
   openAIApiKey: env.OPENAI_API_KEY,
   temperature: 0.3,
   modelName: 'gpt-3.5-turbo',
-  streaming: true,
+  // streaming: true,
 })
