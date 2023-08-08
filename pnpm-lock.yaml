@@ -85,6 +85,25 @@ importers:
         specifier: ^3.12.2
         version: 3.12.2
 
+  packages/consumer:
+    dependencies:
+      kafkajs:
+        specifier: 2.2.4
+        version: 2.2.4
+    devDependencies:
+      '@houston/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: 20.4.5
+        version: 20.4.5
+      dotenv:
+        specifier: 16.3.1
+        version: 16.3.1
+      zod:
+        specifier: 3.21.4
+        version: 3.21.4
+
   packages/contracts:
     dependencies:
       zod:
@@ -3460,6 +3479,11 @@ packages:
       object.assign: 4.1.4
       object.values: 1.1.6
     dev: true
+
+  /kafkajs@2.2.4:
+    resolution: {integrity: sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
