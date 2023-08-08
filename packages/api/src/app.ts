@@ -82,6 +82,8 @@ const routes = app
     const result = await redis.get(userDailyMessageCountRedisKey)
     const amountOfMessagesToday = Number(result) ?? 0
 
+    console.log(amountOfMessagesToday)
+
     if (amountOfMessagesToday >= 100) {
       return c.jsonT(
         {
@@ -120,14 +122,8 @@ const routes = app
       })
       .returning({ dialogChatId: messages.chatId })
 
-    const amountOfSecondsUntilTheEndOfTheDay = dayjs()
-      .endOf('day')
-      .diff(new Date(), 'seconds')
-
     await redis.set(userDailyMessageCountRedisKey, amountOfMessagesToday + 1, {
-      ex: amountOfSecondsUntilTheEndOfTheDay,
-      // this will set the expiry only once per key
-      nx: true,
+      exat: dayjs().endOf('day').unix(),
     })
 
     return textStream(
