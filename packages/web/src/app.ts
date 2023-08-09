@@ -247,7 +247,7 @@ const routes = app
     })
   })
   .get(
-    '/chats/:id/messages',
+    '/chats/:chatId/messages',
     zValidator('param', getChatMessagesParams),
     async (c) => {
       const { pageIndex, pageSize } = getChatMessagesQuery.parse(c.req.query())
