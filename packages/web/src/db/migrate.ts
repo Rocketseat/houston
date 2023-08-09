@@ -4,7 +4,10 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator'
 
 import { env } from '../env'
 
-const client = postgres(env.DATABASE_URL)
+const client = postgres(env.DATABASE_URL, {
+  ssl: 'require',
+  max: 1,
+})
 
 const db = drizzle(client, {
   logger: false,
@@ -16,9 +19,6 @@ migrate(db, {
 })
   .then(() => {
     console.log('Successfully applied all pending migrations.')
-  })
-  .catch((err) => {
-    console.log(err)
   })
   .finally(() => {
     process.exit()
