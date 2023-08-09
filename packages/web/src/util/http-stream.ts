@@ -21,7 +21,7 @@ export class HttpStream {
 
   writeJson<T = unknown>(json: T) {
     this.writeln(JSON.stringify(json))
-    this.flush()
+    // this.flush()
   }
 
   flush() {

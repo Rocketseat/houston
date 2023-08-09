@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.1.7
+
+### Patch Changes
+
+- Add contract to response headers on send-message
+
 ## 0.1.6
 
 ### Patch Changes

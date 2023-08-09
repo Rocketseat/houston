@@ -17,6 +17,15 @@ export const sendMessageResponse = z
   .instanceof(ReadableStream<string>)
   .or(z.object({ status: z.literal('error'), message: z.string() }))
 
+export const sendMessageResponseHeaders = z.object({
+  'Houston-ChatId': z.string().uuid(),
+  'Houston-MessageId': z.string().uuid(),
+})
+
 export type SendMessageBody = z.input<typeof sendMessageBody>
 
 export type SendMessageResponse = z.input<typeof sendMessageResponse>
+
+export type SendMessageResponseHeaders = z.input<
+  typeof sendMessageResponseHeaders
+>

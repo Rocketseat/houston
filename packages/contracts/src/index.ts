@@ -1,8 +1,10 @@
 export {
   sendMessageBody,
   sendMessageResponse,
+  sendMessageResponseHeaders,
   SendMessageBody,
   SendMessageResponse,
+  SendMessageResponseHeaders,
 } from './send-message'
 
 export {

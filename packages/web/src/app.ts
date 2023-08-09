@@ -7,6 +7,7 @@ import {
   GetChatByIdResponse,
   GetChatMessagesResponse,
   GetRecentChatsResponse,
+  SendMessageResponseHeaders,
   getChatByIdParams,
   getChatMessagesParams,
   getChatMessagesQuery,
@@ -35,7 +36,13 @@ export const app = new Hono<{
   Variables: { atlasUserId: string }
 }>().basePath('/api')
 
-app.use('*', cors())
+app.use(
+  '*',
+  cors({
+    origin: '*',
+    exposeHeaders: ['Houston-ChatId', 'Houston-MessageId'],
+  }),
+)
 
 app.use(async (c, next) => {
   const authHeader = c.req.header('Authorization')
@@ -136,6 +143,8 @@ const routes = app
       exat: dayjs().endOf('day').unix(),
     })
 
+    const responseMessageId = crypto.randomUUID()
+
     return textStream(
       async (stream) => {
         const houston = createChainFromMemories(conversationMemory)
@@ -166,6 +175,7 @@ const routes = app
           ) ?? []
 
         await db.insert(messages).values({
+          id: responseMessageId,
           chatId: dialogChatId,
           role: 'assistant',
           sourceDocuments: sourceVideosIds,
@@ -173,8 +183,9 @@ const routes = app
         })
       },
       {
-        'Houston-CurrentChatId': currentChatId,
-      },
+        'Houston-ChatId': currentChatId,
+        'Houston-MessageId': responseMessageId,
+      } as SendMessageResponseHeaders,
     )
   })
   .get('/chats/:id', zValidator('param', getChatByIdParams), async (c) => {
