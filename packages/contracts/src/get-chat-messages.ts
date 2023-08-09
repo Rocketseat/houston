@@ -21,8 +21,8 @@ export const getChatMessagesResponse = z
   })
   .merge(paginatedResponse)
 
-export type GetChatMessagesParams = z.infer<typeof getChatMessagesParams>
+export type GetChatMessagesParams = z.input<typeof getChatMessagesParams>
 
-export type GetChatMessagesQuery = z.infer<typeof getChatMessagesQuery>
+export type GetChatMessagesQuery = z.input<typeof getChatMessagesQuery>
 
-export type GetChatMessagesResponse = z.infer<typeof getChatMessagesResponse>
+export type GetChatMessagesResponse = z.input<typeof getChatMessagesResponse>

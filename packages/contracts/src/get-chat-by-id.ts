@@ -12,6 +12,6 @@ export const getChatByIdResponse = z.object({
   }),
 })
 
-export type GetChatByIdParams = z.infer<typeof getChatByIdParams>
+export type GetChatByIdParams = z.input<typeof getChatByIdParams>
 
-export type GetChatByIdResponse = z.infer<typeof getChatByIdResponse>
+export type GetChatByIdResponse = z.input<typeof getChatByIdResponse>

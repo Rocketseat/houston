@@ -17,6 +17,6 @@ export const sendMessageResponse = z
   .instanceof(ReadableStream<string>)
   .or(z.object({ status: z.literal('error'), message: z.string() }))
 
-export type SendMessageBody = z.infer<typeof sendMessageBody>
+export type SendMessageBody = z.input<typeof sendMessageBody>
 
-export type SendMessageResponse = z.infer<typeof sendMessageResponse>
+export type SendMessageResponse = z.input<typeof sendMessageResponse>

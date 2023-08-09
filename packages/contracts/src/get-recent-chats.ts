@@ -20,6 +20,6 @@ export const getRecentChatsResponse = z
   })
   .merge(paginatedResponse)
 
-export type GetRecentChatsQuery = z.infer<typeof getRecentChatsQuery>
+export type GetRecentChatsQuery = z.input<typeof getRecentChatsQuery>
 
-export type GetRecentChatsResponse = z.infer<typeof getRecentChatsResponse>
+export type GetRecentChatsResponse = z.input<typeof getRecentChatsResponse>
