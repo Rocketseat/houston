@@ -2,13 +2,7 @@
   "name": "@houston/langchain",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
-  },
+  "main": "src/index.ts",
   "devDependencies": {
     "@houston/tsconfig": "workspace:*",
     "@types/node": "20.4.5",

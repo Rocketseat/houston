@@ -1,4 +1,4 @@
-import { env } from '@/env'
+import { env } from '../../env'
 import { ChatOpenAI } from 'langchain/chat_models/openai'
 
 export const openAiGenerator = new ChatOpenAI({

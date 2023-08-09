@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import { zValidator } from '@hono/zod-validator'
 import { db } from './db'
 import { chats, messages } from './db/schema'
@@ -33,6 +34,8 @@ const ratelimit = new Ratelimit({
 export const app = new Hono<{
   Variables: { atlasUserId: string }
 }>().basePath('/api')
+
+app.use('*', cors())
 
 app.use(async (c, next) => {
   const authHeader = c.req.header('Authorization')

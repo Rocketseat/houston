@@ -1,8 +1,0 @@
-{
-  "extends": "@houston/tsconfig/node.json",
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}

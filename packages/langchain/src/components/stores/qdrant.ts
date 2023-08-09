@@ -3,7 +3,7 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { TokenTextSplitter } from 'langchain/text_splitter'
 import { Document } from 'langchain/document'
 
-import { env } from '@/env'
+import { env } from '../../env'
 
 interface Video {
   id: string
