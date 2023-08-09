@@ -6,4 +6,5 @@ export const openAiChat = new ChatOpenAI({
   temperature: 0.3,
   modelName: 'gpt-3.5-turbo',
   streaming: true,
+  maxTokens: -1,
 })
