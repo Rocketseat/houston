@@ -32,7 +32,7 @@ const ratelimit = new Ratelimit({
 
 export const app = new Hono<{
   Variables: { atlasUserId: string }
-}>()
+}>().basePath('/api')
 
 app.use(async (c, next) => {
   const authHeader = c.req.header('Authorization')
@@ -47,14 +47,22 @@ app.use(async (c, next) => {
     throw new HTTPException(401)
   }
 
-  const publicKey = await importSPKI(atob(env.JWT_PUBLIC_KEY), 'RS256')
-  const { payload } = await jwtVerify(token, publicKey)
+  const publicKey = await importSPKI(
+    Buffer.from(env.JWT_PUBLIC_KEY, 'base64').toString('utf8'),
+    'RS256',
+  )
 
-  const atlasUserId = z.string().uuid().parse(payload.uid)
+  try {
+    const { payload } = await jwtVerify(token, publicKey)
 
-  c.set('atlasUserId', atlasUserId)
+    const atlasUserId = z.string().uuid().parse(payload.uid)
 
-  return await next()
+    c.set('atlasUserId', atlasUserId)
+
+    return await next()
+  } catch (err) {
+    return new Response(null, { status: 401 })
+  }
 })
 
 app.use(async (c, next) => {
@@ -68,9 +76,8 @@ app.use(async (c, next) => {
 })
 
 const routes = app
-  .get('/', (c) => c.text('Hello'))
   .post('/messages', zValidator('json', sendMessageBody), async (c) => {
-    const { text, chatId, title, jupiterVideoId } = c.req.valid('json')
+    const { text, chatId, title } = c.req.valid('json')
     const atlasUserId = c.get('atlasUserId')
 
     let currentChatId = chatId
@@ -80,8 +87,6 @@ const routes = app
 
     const result = await redis.get(userDailyMessageCountRedisKey)
     const amountOfMessagesToday = Number(result) ?? 0
-
-    console.log(amountOfMessagesToday)
 
     if (amountOfMessagesToday >= 100) {
       return c.jsonT(
