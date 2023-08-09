@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pnpm migrate:push",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "migrate:gen": "drizzle-kit generate:pg",
