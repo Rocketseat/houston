@@ -20,7 +20,7 @@ import { importSPKI, jwtVerify } from 'jose'
 import { z } from 'zod'
 import { env } from './env'
 import { textStream } from './util/http-stream'
-import { and, asc, eq, ilike, sql } from 'drizzle-orm'
+import { and, asc, desc, eq, ilike, sql } from 'drizzle-orm'
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 import dayjs from 'dayjs'
@@ -169,16 +169,18 @@ const routes = app
           },
         ])
 
-        const sourceVideosIds =
-          response?.sourceDocuments.map(
-            (document: Document) => document.metadata.jupiterId,
-          ) ?? []
+        const source =
+          response.sourceDocuments?.map((document: Document) => {
+            const { jupiterId, title } = document.metadata
+
+            return { jupiterId, title }
+          }) ?? []
 
         await db.insert(messages).values({
           id: responseMessageId,
           chatId: dialogChatId,
           role: 'assistant',
-          sourceDocuments: sourceVideosIds,
+          source,
           text: response.text,
         })
       },
@@ -240,6 +242,7 @@ const routes = app
             ilike(chats.title, `%${search}%`),
           ),
         )
+        .orderBy(desc(chats.createdAt))
         .offset(pageIndex * pageSize)
         .limit(pageSize),
     ])
@@ -285,6 +288,7 @@ const routes = app
               eq(messages.chatId, chatId),
             ),
           )
+          .orderBy(desc(messages.createdAt))
           .offset(pageIndex * pageSize)
           .limit(pageSize),
       ])
@@ -297,6 +301,7 @@ const routes = app
           return {
             id: message.id,
             role: message.role,
+            source: message.source,
             text: message.text,
             createdAt: message.createdAt,
           }

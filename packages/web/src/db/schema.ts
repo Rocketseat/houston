@@ -25,7 +25,10 @@ export const messages = pgTable('messages', {
     .notNull()
     .references(() => chats.id, { onDelete: 'cascade' }),
   role: roleEnum('role').notNull().default('user'),
-  sourceDocuments: json('source_documents').$type<string[]>().default([]),
+  source: json('source')
+    .$type<Array<{ jupiterId: string; title: string }>>()
+    .notNull()
+    .default([]),
   text: text('text').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()

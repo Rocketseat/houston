@@ -15,6 +15,12 @@ export const getChatMessagesResponse = z
         id: z.string(),
         role: z.enum(['assistant', 'user']),
         text: z.string(),
+        source: z.array(
+          z.object({
+            jupiterId: z.string(),
+            title: z.string(),
+          }),
+        ),
         createdAt: z.date(),
       }),
     ),
