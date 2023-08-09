@@ -17,6 +17,9 @@ migrate(db, {
   .then(() => {
     console.log('Successfully applied all pending migrations.')
   })
+  .catch((err) => {
+    console.log(err)
+  })
   .finally(() => {
     process.exit()
   })
