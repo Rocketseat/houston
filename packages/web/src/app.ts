@@ -19,7 +19,7 @@ import { importSPKI, jwtVerify } from 'jose'
 import { z } from 'zod'
 import { env } from './env'
 import { textStream } from './util/http-stream'
-import { asc, eq, ilike, sql } from 'drizzle-orm'
+import { and, asc, eq, ilike, sql } from 'drizzle-orm'
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 import dayjs from 'dayjs'
@@ -214,13 +214,21 @@ const routes = app
       db
         .select({ count: sql<number>`count(*)` })
         .from(chats)
-        .where(eq(chats.atlasUserId, atlasUserId))
-        .where(ilike(chats.title, search)),
+        .where(
+          and(
+            eq(chats.atlasUserId, atlasUserId),
+            ilike(chats.title, `%${search}%`),
+          ),
+        ),
       db
         .select()
         .from(chats)
-        .where(eq(chats.atlasUserId, atlasUserId))
-        .where(ilike(chats.title, search))
+        .where(
+          and(
+            eq(chats.atlasUserId, atlasUserId),
+            ilike(chats.title, `%${search}%`),
+          ),
+        )
         .offset(pageIndex * pageSize)
         .limit(pageSize),
     ])
@@ -251,13 +259,21 @@ const routes = app
           .select({ count: sql<number>`count(*)` })
           .from(messages)
           .innerJoin(chats, eq(chats.id, messages.chatId))
-          .where(eq(chats.atlasUserId, atlasUserId))
-          .where(eq(messages.chatId, chatId)),
+          .where(
+            and(
+              eq(chats.atlasUserId, atlasUserId),
+              eq(messages.chatId, chatId),
+            ),
+          ),
         db
           .select()
           .from(messages)
-          .where(eq(chats.atlasUserId, atlasUserId))
-          .where(eq(messages.chatId, chatId))
+          .where(
+            and(
+              eq(chats.atlasUserId, atlasUserId),
+              eq(messages.chatId, chatId),
+            ),
+          )
           .offset(pageIndex * pageSize)
           .limit(pageSize),
       ])
