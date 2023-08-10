@@ -12,7 +12,7 @@ import { chats } from '../db/schema'
 export const getChatByIdController = new Hono<HoustonApp>()
 
 getChatByIdController.get(
-  '/chats/:id',
+  '/chats/:chatId',
   zValidator('param', getChatByIdParams),
   async (c) => {
     const { chatId } = c.req.valid('param')
