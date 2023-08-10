@@ -1,1 +1,0 @@
-ALTER TABLE "messages" ADD COLUMN "source_documents" json DEFAULT '[]'::json;

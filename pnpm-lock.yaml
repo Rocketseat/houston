@@ -180,6 +180,9 @@ importers:
       drizzle-orm:
         specifier: 0.27.2
         version: 0.27.2(@neondatabase/serverless@0.5.6)(postgres@3.3.5)
+      hex2dec:
+        specifier: 1.1.2
+        version: 1.1.2
       hono:
         specifier: ^3.4.1
         version: 3.4.1
@@ -189,9 +192,6 @@ importers:
       next:
         specifier: ^13.4.0
         version: 13.4.13(react-dom@18.2.0)(react@18.2.0)
-      nodejs-snowflake:
-        specifier: 2.0.1
-        version: 2.0.1
       postgres:
         specifier: 3.3.5
         version: 3.3.5
@@ -205,6 +205,9 @@ importers:
         specifier: 3.21.4
         version: 3.21.4
     devDependencies:
+      '@types/hex2dec':
+        specifier: 1.1.2
+        version: 1.1.2
       '@types/node':
         specifier: 20.4.5
         version: 20.4.5
@@ -1219,6 +1222,10 @@ packages:
 
   /@types/chai@4.3.5:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
+    dev: true
+
+  /@types/hex2dec@1.1.2:
+    resolution: {integrity: sha512-9mWQ0gKYWKybgC0UsW2ZwurhPYyCnO0ZmN7bnvxxk5m19PEydzums7ozq2p5f1pbV07IZ9qjR/IkGYpEIpXNoQ==}
     dev: true
 
   /@types/is-ci@3.0.0:
@@ -3390,6 +3397,10 @@ packages:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
     dev: true
 
+  /hex2dec@1.1.2:
+    resolution: {integrity: sha512-Yu+q/XWr2fFQ11tHxPq4p4EiNkb2y+lAacJNhAdRXVfRIcDH6gi7htWFnnlIzvqHMHoWeIsfXlNAjZInpAOJDA==}
+    dev: false
+
   /hono@3.3.4:
     resolution: {integrity: sha512-lqvcsQrXS0bSydj/MkOXi3opAwrlauIjZefhXMMRj9prABfBWdrYHSrWk/xfxgxNPs4yuEMh2Z5zV0L2b1Jmdw==}
     engines: {node: '>=16.0.0'}
@@ -4418,10 +4429,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: false
-
-  /nodejs-snowflake@2.0.1:
-    resolution: {integrity: sha512-zMfDorNNsJm1OWWx/OUUGVT0bQ3TwC2ti4URD8UjnpffVLtLpy3eBDIaV5TnLs91YrRhwBD6L0StqU6YtnZt9A==}
     dev: false
 
   /normalize-package-data@2.5.0:

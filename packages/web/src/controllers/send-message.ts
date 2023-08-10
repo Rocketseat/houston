@@ -12,6 +12,8 @@ import { db } from '../db'
 import { chats, messages } from '../db/schema'
 import { textStream } from '../util/http-stream'
 import { redis } from '../lib/redis'
+import { HTTPException } from 'hono/http-exception'
+import { Snowflake } from '../util/snowflake'
 
 export const sendMessageController = new Hono<HoustonApp>()
 
@@ -19,10 +21,10 @@ sendMessageController.post(
   '/messages',
   zValidator('json', sendMessageBody),
   async (c) => {
+    const snowflake = new Snowflake()
+
     const { text, chatId, title } = c.req.valid('json')
     const atlasUserId = c.get('atlasUserId')
-
-    let currentChatId = chatId
 
     const today = dayjs().format('YYYY-MM-DD')
     const userDailyMessageCountRedisKey = `user:${atlasUserId}:${today}`
@@ -31,21 +33,15 @@ sendMessageController.post(
     const amountOfMessagesToday = Number(result) ?? 0
 
     if (amountOfMessagesToday >= 100) {
-      return c.jsonT(
-        {
-          message:
-            'São permitidas até 100 mensagens por usuário por dia. Você poderá utilizar novamente após 24h. ',
-        },
-        {
-          status: 429,
-        },
-      )
+      throw new HTTPException(429)
     }
 
     let conversationMemory: Array<{
       role: 'user' | 'assistant'
       text: string
     }> = []
+
+    let currentChatId = chatId
 
     if (!currentChatId) {
       const [chat] = await db
@@ -65,6 +61,7 @@ sendMessageController.post(
     const [{ dialogChatId }] = await db
       .insert(messages)
       .values({
+        id: snowflake.getUniqueID(),
         chatId: currentChatId,
         role: 'user',
         text,
@@ -75,7 +72,7 @@ sendMessageController.post(
       exat: dayjs().endOf('day').unix(),
     })
 
-    const responseMessageId = crypto.randomUUID()
+    const responseMessageId = snowflake.getUniqueID()
 
     return textStream(
       async (stream) => {
@@ -118,7 +115,7 @@ sendMessageController.post(
       },
       {
         'Houston-ChatId': currentChatId,
-        'Houston-MessageId': responseMessageId,
+        'Houston-MessageId': responseMessageId.toString(),
       } as SendMessageResponseHeaders,
     )
   },

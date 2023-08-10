@@ -12,7 +12,7 @@ export const getChatMessagesResponse = z
   .object({
     messages: z.array(
       z.object({
-        id: z.string(),
+        id: z.bigint(),
         role: z.enum(['assistant', 'user']),
         text: z.string(),
         source: z.array(

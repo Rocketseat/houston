@@ -5,50 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1690905900637,
-      "tag": "0000_demonic_tinkerer",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1690908080420,
-      "tag": "0001_plain_wither",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1690908237191,
-      "tag": "0002_old_gladiator",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1691240277158,
-      "tag": "0003_calm_randall_flagg",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1691267792942,
-      "tag": "0004_normal_hellfire_club",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1691268158406,
-      "tag": "0005_foamy_jack_flag",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1691618909937,
-      "tag": "0006_bent_sharon_ventura",
+      "when": 1691674762931,
+      "tag": "0000_thankful_manta",
       "breakpoints": true
     }
   ]

@@ -1,5 +1,6 @@
 import { relations } from 'drizzle-orm'
 import {
+  bigint,
   json,
   pgEnum,
   pgTable,
@@ -20,7 +21,7 @@ export const chats = pgTable('chats', {
 export const roleEnum = pgEnum('message_role', ['user', 'assistant'])
 
 export const messages = pgTable('messages', {
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: bigint('id', { mode: 'bigint' }).primaryKey(),
   chatId: uuid('chat_id')
     .notNull()
     .references(() => chats.id, { onDelete: 'cascade' }),
