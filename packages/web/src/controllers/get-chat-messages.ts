@@ -6,7 +6,7 @@ import {
   getChatMessagesQuery,
   GetChatMessagesResponse,
 } from '@rocketseat/houston-contracts'
-import { sql, eq, and, desc, gt } from 'drizzle-orm'
+import { sql, eq, and, desc, lt } from 'drizzle-orm'
 import { db } from '../db'
 import { messages, chats } from '../db/schema'
 
@@ -42,7 +42,7 @@ getChatMessagesController.get(
           and(
             eq(chats.atlasUserId, atlasUserId),
             eq(messages.chatId, chatId),
-            cursor ? gt(messages.id, cursor) : undefined,
+            cursor ? lt(messages.id, cursor) : undefined,
           ),
         )
         .orderBy(desc(messages.createdAt))
