@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "cloudflare",
     "hono",
     "houston",
     "ilike",
@@ -11,6 +12,8 @@
     "qdrant",
     "Qdrant",
     "QDRANT",
+    "qstash",
+    "QSTASH",
     "ratelimit",
     "Ratelimit",
     "upstash",

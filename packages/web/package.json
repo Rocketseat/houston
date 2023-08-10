@@ -16,6 +16,7 @@
     "@houston/langchain": "workspace:*",
     "@neondatabase/serverless": "0.5.6",
     "@rocketseat/houston-contracts": "workspace:*",
+    "@upstash/qstash": "0.3.6",
     "@upstash/ratelimit": "0.4.3",
     "@upstash/redis": "1.22.0",
     "dayjs": "1.11.9",

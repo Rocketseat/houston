@@ -9,6 +9,7 @@ import { getChatMessagesController } from './controllers/get-chat-messages'
 
 import { verifyJWTMiddleware } from './middlewares/verify-jwt'
 import { rateLimitMiddleware } from './middlewares/ratelimit'
+import { webhooks } from './controllers/webhooks'
 
 export const app = new Hono<HoustonApp>().basePath('/api')
 
@@ -23,6 +24,10 @@ app.use(
     ],
   }),
 )
+
+app.notFound((c) => c.json({ error: 'Not Found' }, 404))
+
+app.route('/webhooks', webhooks)
 
 const routes = app
   .route('/', verifyJWTMiddleware)

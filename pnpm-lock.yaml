@@ -88,6 +88,9 @@ importers:
       '@rocketseat/houston-contracts':
         specifier: workspace:*
         version: link:../contracts
+      '@upstash/qstash':
+        specifier: 0.3.6
+        version: 0.3.6
       '@upstash/ratelimit':
         specifier: 0.4.3
         version: 0.4.3
@@ -387,6 +390,10 @@ packages:
       human-id: 1.0.2
       prettier: 2.8.8
     dev: true
+
+  /@deno/shim-crypto@0.3.1:
+    resolution: {integrity: sha512-ed4pNnfur6UbASEgF34gVxR9p7Mc3qF+Ygbmjiil8ws5IhNFhPDFy5vE5hQAUA9JmVsSxXPcVLM5Rf8LOZqQ5Q==}
+    dev: false
 
   /@drizzle-team/studio@0.0.5:
     resolution: {integrity: sha512-ps5qF0tMxWRVu+V5gvCRrQNqlY92aTnIKdq27gm9LZMSdaKYZt6AVvSK1dlUMzs6Rt0Jm80b+eWct6xShBKhIw==}
@@ -1360,6 +1367,12 @@ packages:
       '@upstash/redis': 1.22.0
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /@upstash/qstash@0.3.6:
+    resolution: {integrity: sha512-NKN4jbPhB5lfHoSIaU7AuQ3F+yGS20e/FBRiUuPetcKoi354wHhKj9AJFfkFT5SSeLq0XEsXRNynm8gqCS4HjQ==}
+    dependencies:
+      '@deno/shim-crypto': 0.3.1
     dev: false
 
   /@upstash/ratelimit@0.4.3:

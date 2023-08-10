@@ -43,7 +43,16 @@ export async function addVideos(videos: Video[]) {
 }
 
 export async function removeVideo(videoId: string) {
-  await qdrantVectorStore.delete({
-    jupiterId: videoId,
+  await qdrantVectorStore.client.delete(qdrantVectorStore.collectionName, {
+    filter: {
+      must: [
+        {
+          key: 'metadata.jupiterId',
+          match: {
+            value: videoId,
+          },
+        },
+      ],
+    },
   })
 }
