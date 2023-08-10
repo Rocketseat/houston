@@ -6,7 +6,7 @@ import {
   getChatMessagesQuery,
   GetChatMessagesResponse,
 } from '@rocketseat/houston-contracts'
-import { sql, eq, and, desc } from 'drizzle-orm'
+import { sql, eq, and, desc, gt } from 'drizzle-orm'
 import { db } from '../db'
 import { messages, chats } from '../db/schema'
 
@@ -16,7 +16,7 @@ getChatMessagesController.get(
   '/chats/:chatId/messages',
   zValidator('param', getChatMessagesParams),
   async (c) => {
-    const { pageIndex, pageSize } = getChatMessagesQuery.parse(c.req.query())
+    const { cursor, pageSize } = getChatMessagesQuery.parse(c.req.query())
     const { chatId } = c.req.valid('param')
     const atlasUserId = c.get('atlasUserId')
 
@@ -32,10 +32,13 @@ getChatMessagesController.get(
         .select()
         .from(messages)
         .where(
-          and(eq(chats.atlasUserId, atlasUserId), eq(messages.chatId, chatId)),
+          and(
+            eq(chats.atlasUserId, atlasUserId),
+            eq(messages.chatId, chatId),
+            cursor ? gt(messages.id, cursor) : undefined,
+          ),
         )
         .orderBy(desc(messages.createdAt))
-        .offset(pageIndex * pageSize)
         .limit(pageSize),
     ])
 

@@ -6,7 +6,13 @@ export const getChatMessagesParams = z.object({
   chatId: z.string().uuid(),
 })
 
-export const getChatMessagesQuery = z.object({}).merge(paginatedRequest)
+export const getChatMessagesQuery = z.object({
+  cursor: z.string().transform(BigInt).pipe(z.bigint()).optional(),
+  pageSize: z
+    .string()
+    .transform(Number)
+    .pipe(z.number().min(1).max(20).default(5)),
+})
 
 export const getChatMessagesResponse = z
   .object({

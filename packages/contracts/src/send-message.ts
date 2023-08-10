@@ -13,7 +13,8 @@ export const sendMessageResponse = z
 
 export const sendMessageResponseHeaders = z.object({
   'Houston-ChatId': z.string().uuid(),
-  'Houston-MessageId': z.string(),
+  'Houston-UserMessageId': z.string(),
+  'Houston-AssistantMessageId': z.string(),
 })
 
 export type SendMessageBody = z.input<typeof sendMessageBody>

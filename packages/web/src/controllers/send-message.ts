@@ -58,10 +58,12 @@ sendMessageController.post(
         .orderBy(asc(messages.createdAt))
     }
 
+    const userMessageId = snowflake.getUniqueID()
+
     const [{ dialogChatId }] = await db
       .insert(messages)
       .values({
-        id: snowflake.getUniqueID(),
+        id: userMessageId,
         chatId: currentChatId,
         role: 'user',
         text,
@@ -115,7 +117,8 @@ sendMessageController.post(
       },
       {
         'Houston-ChatId': currentChatId,
-        'Houston-MessageId': responseMessageId.toString(),
+        'Houston-UserMessageId': userMessageId.toString(),
+        'Houston-AssistantMessageId': responseMessageId.toString(),
       } as SendMessageResponseHeaders,
     )
   },
