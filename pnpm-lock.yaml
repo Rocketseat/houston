@@ -189,6 +189,9 @@ importers:
       next:
         specifier: ^13.4.0
         version: 13.4.13(react-dom@18.2.0)(react@18.2.0)
+      nodejs-snowflake:
+        specifier: 2.0.1
+        version: 2.0.1
       postgres:
         specifier: 3.3.5
         version: 3.3.5
@@ -4415,6 +4418,10 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: false
+
+  /nodejs-snowflake@2.0.1:
+    resolution: {integrity: sha512-zMfDorNNsJm1OWWx/OUUGVT0bQ3TwC2ti4URD8UjnpffVLtLpy3eBDIaV5TnLs91YrRhwBD6L0StqU6YtnZt9A==}
     dev: false
 
   /normalize-package-data@2.5.0:
