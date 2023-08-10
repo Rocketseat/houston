@@ -5,7 +5,7 @@ import {
   getChatByIdParams,
   GetChatByIdResponse,
 } from '@rocketseat/houston-contracts'
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { db } from '../db'
 import { chats } from '../db/schema'
 
@@ -21,8 +21,7 @@ getChatByIdController.get(
     const results = await db
       .select()
       .from(chats)
-      .where(eq(chats.id, chatId))
-      .where(eq(chats.atlasUserId, atlasUserId))
+      .where(and(eq(chats.id, chatId), eq(chats.atlasUserId, atlasUserId)))
 
     if (results.length === 0) {
       return new Response(null, {
