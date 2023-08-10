@@ -45,7 +45,7 @@ getChatMessagesController.get(
       totalCount,
       messages: results.map((message) => {
         return {
-          id: message.id,
+          id: message.id.toString(),
           role: message.role,
           source: message.source,
           text: message.text,
