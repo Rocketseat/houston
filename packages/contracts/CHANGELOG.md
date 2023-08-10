@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.1.8
+
+### Patch Changes
+
+- cursor pagination
+
 ## 0.1.7
 
 ### Patch Changes

@@ -16,7 +16,11 @@ app.use(
   '*',
   cors({
     origin: '*',
-    exposeHeaders: ['Houston-ChatId', 'Houston-MessageId'],
+    exposeHeaders: [
+      'Houston-ChatId',
+      'Houston-AssistantMessageId',
+      'Houston-UserMessageId',
+    ],
   }),
 )
 

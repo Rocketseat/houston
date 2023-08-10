@@ -20,7 +20,7 @@ getChatMessagesController.get(
     const { chatId } = c.req.valid('param')
     const atlasUserId = c.get('atlasUserId')
 
-    const [countResult, results] = await Promise.all([
+    const [countResult, result] = await Promise.all([
       db
         .select({ count: sql<number>`count(*)` })
         .from(messages)
@@ -29,8 +29,15 @@ getChatMessagesController.get(
           and(eq(chats.atlasUserId, atlasUserId), eq(messages.chatId, chatId)),
         ),
       db
-        .select()
+        .select({
+          id: messages.id,
+          role: messages.role,
+          source: messages.source,
+          text: messages.text,
+          createdAt: messages.createdAt,
+        })
         .from(messages)
+        .leftJoin(chats, eq(chats.id, messages.chatId))
         .where(
           and(
             eq(chats.atlasUserId, atlasUserId),
@@ -46,7 +53,7 @@ getChatMessagesController.get(
 
     return c.jsonT<GetChatMessagesResponse>({
       totalCount,
-      messages: results.map((message) => {
+      messages: result.map((message) => {
         return {
           id: message.id.toString(),
           role: message.role,
