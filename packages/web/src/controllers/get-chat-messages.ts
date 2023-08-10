@@ -6,7 +6,7 @@ import {
   getChatMessagesQuery,
   GetChatMessagesResponse,
 } from '@rocketseat/houston-contracts'
-import { sql, eq, and, desc, gt } from 'drizzle-orm'
+import { sql, eq, and, gt, asc } from 'drizzle-orm'
 import { db } from '../db'
 import { messages, chats } from '../db/schema'
 
@@ -45,7 +45,7 @@ getChatMessagesController.get(
             cursor ? gt(messages.id, cursor) : undefined,
           ),
         )
-        .orderBy(desc(messages.createdAt))
+        .orderBy(asc(messages.createdAt))
         .limit(pageSize),
     ])
 
