@@ -4,7 +4,6 @@ import { Receiver } from '@upstash/qstash/cloudflare'
 import { env } from '../env'
 import { HTTPException } from 'hono/http-exception'
 import { z } from 'zod'
-import { zValidator } from '@hono/zod-validator'
 import {
   addVideos,
   removeVideo,
@@ -12,24 +11,20 @@ import {
 
 export const webhooks = new Hono<HoustonApp>()
 
-webhooks.use('*', async (c, next) => {
-  if (env.NODE_ENV === 'development') {
-    // Bypass signature verification in development
-    return await next()
+async function validateQstashSignature(body: string, signature: string | null) {
+  // if (env.NODE_ENV === 'development') {
+  //   // Bypass signature verification in development
+  //   return await next()
+  // }
+
+  if (!signature) {
+    throw new HTTPException(401)
   }
 
   const receiver = new Receiver({
     currentSigningKey: env.QSTASH_CURRENT_SIGNING_KEY,
     nextSigningKey: env.QSTASH_NEXT_SIGNING_KEY,
   })
-
-  const body = await c.req.text()
-
-  const signature = c.req.headers.get('Upstash-Signature')
-
-  if (!signature) {
-    throw new HTTPException(401)
-  }
 
   const isValid = await receiver
     .verify({
@@ -43,9 +38,7 @@ webhooks.use('*', async (c, next) => {
   if (!isValid) {
     throw new HTTPException(401)
   }
-
-  return await next()
-})
+}
 
 const createOrUpdateVideoBody = z.object({
   videoId: z.string(),
@@ -57,51 +50,58 @@ const deleteVideoBody = z.object({
   videoId: z.string(),
 })
 
-webhooks.post(
-  '/create-video',
-  zValidator('json', createOrUpdateVideoBody),
-  async (c) => {
-    const { videoId, title, transcription } = c.req.valid('json')
+webhooks.post('/create-video', async (c) => {
+  const bodyAsText = await c.req.text()
+  const signature = c.req.headers.get('Upstash-Signature')
 
-    await addVideos([
-      {
-        id: videoId,
-        title,
-        transcription,
-      },
-    ])
+  await validateQstashSignature(bodyAsText, signature)
 
-    return new Response()
-  },
-)
+  const { videoId, title, transcription } = createOrUpdateVideoBody.parse(
+    JSON.parse(bodyAsText),
+  )
 
-webhooks.post(
-  '/update-video',
-  zValidator('json', createOrUpdateVideoBody),
-  async (c) => {
-    const { videoId, title, transcription } = c.req.valid('json')
+  await addVideos([
+    {
+      id: videoId,
+      title,
+      transcription,
+    },
+  ])
 
-    await removeVideo(videoId)
-    await addVideos([
-      {
-        id: videoId,
-        title,
-        transcription,
-      },
-    ])
+  return new Response()
+})
 
-    return new Response()
-  },
-)
+webhooks.post('/update-video', async (c) => {
+  const bodyAsText = await c.req.text()
+  const signature = c.req.headers.get('Upstash-Signature')
 
-webhooks.post(
-  '/delete-video',
-  zValidator('json', deleteVideoBody),
-  async (c) => {
-    const { videoId } = c.req.valid('json')
+  await validateQstashSignature(bodyAsText, signature)
 
-    await removeVideo(videoId)
+  const { videoId, title, transcription } = createOrUpdateVideoBody.parse(
+    JSON.parse(bodyAsText),
+  )
 
-    return new Response()
-  },
-)
+  await removeVideo(videoId)
+  await addVideos([
+    {
+      id: videoId,
+      title,
+      transcription,
+    },
+  ])
+
+  return new Response()
+})
+
+webhooks.post('/delete-video', async (c) => {
+  const bodyAsText = await c.req.text()
+  const signature = c.req.headers.get('Upstash-Signature')
+
+  await validateQstashSignature(bodyAsText, signature)
+
+  const { videoId } = deleteVideoBody.parse(JSON.parse(bodyAsText))
+
+  await removeVideo(videoId)
+
+  return new Response()
+})
