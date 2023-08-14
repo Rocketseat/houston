@@ -8,6 +8,13 @@
       "when": 1691674762931,
       "tag": "0000_thankful_manta",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1692039921034,
+      "tag": "0001_spicy_eternals",
+      "breakpoints": true
     }
   ]
 }

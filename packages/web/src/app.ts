@@ -6,10 +6,11 @@ import { sendMessageController } from './controllers/send-message'
 import { getChatByIdController } from './controllers/get-chat-by-id'
 import { searchRecentChatsController } from './controllers/search-recent-chats'
 import { getChatMessagesController } from './controllers/get-chat-messages'
+import { deleteChatByIdController } from './controllers/delete-chat-by-id'
+import { webhooks } from './controllers/webhooks'
 
 import { verifyJWTMiddleware } from './middlewares/verify-jwt'
 import { rateLimitMiddleware } from './middlewares/ratelimit'
-import { webhooks } from './controllers/webhooks'
 
 export const app = new Hono<HoustonApp>().basePath('/api')
 
@@ -34,6 +35,7 @@ const routes = app
   .route('/', rateLimitMiddleware)
   .route('/', sendMessageController)
   .route('/', getChatByIdController)
+  .route('/', deleteChatByIdController)
   .route('/', searchRecentChatsController)
   .route('/', getChatMessagesController)
 

@@ -7,16 +7,25 @@ import {
   text,
   timestamp,
   uuid,
+  index,
 } from 'drizzle-orm/pg-core'
 
-export const chats = pgTable('chats', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  title: text('title').notNull(),
-  atlasUserId: uuid('atlas_user_id').notNull(),
-  createdAt: timestamp('created_at', { withTimezone: true })
-    .notNull()
-    .defaultNow(),
-})
+export const chats = pgTable(
+  'chats',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    title: text('title').notNull(),
+    atlasUserId: uuid('atlas_user_id'),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => {
+    return {
+      atlasUserIdIdx: index('atlas_user_id_idx').on(table.atlasUserId),
+    }
+  },
+)
 
 export const roleEnum = pgEnum('message_role', ['user', 'assistant'])
 
