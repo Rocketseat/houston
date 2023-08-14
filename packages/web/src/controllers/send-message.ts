@@ -88,8 +88,6 @@ sendMessageController.post(
           },
         ])
 
-        console.log(response)
-
         const source =
           response.sourceDocuments?.map((document: Document) => {
             const { jupiterId, title } = document.metadata

@@ -1,11 +1,13 @@
-import { ConversationalRetrievalQAChain } from 'langchain/chains'
+import { ConversationalRetrievalQAChain, LLMChain } from 'langchain/chains'
 import { BufferMemory, ChatMessageHistory } from 'langchain/memory'
 
 import { qdrantVectorStore } from '../components/stores/qdrant'
 import { defaultPrompt } from '../components/prompts/default'
 import { openAiChat } from '../components/llms/chat-open-ai'
 import { AIMessage, HumanMessage } from 'langchain/schema'
+import { PromptTemplate } from 'langchain/prompts'
 import { openAiGenerator } from '../components/llms/generator-open-ai'
+import { CombineDocsWithMetadataChain } from './combine-docs-with-metadata'
 
 const MAX_RETRIEVER_RESULTS = 3
 
@@ -33,34 +35,33 @@ export function createChainFromMemories(memories: Memory[]) {
     returnMessages: true,
   })
 
-  const houston = ConversationalRetrievalQAChain.fromLLM(
-    openAiChat,
-    qdrantVectorStore.asRetriever({
+  const houston = new ConversationalRetrievalQAChain({
+    inputKey: 'question',
+    returnSourceDocuments: true,
+    memory,
+    retriever: qdrantVectorStore.asRetriever({
       k: MAX_RETRIEVER_RESULTS,
     }),
-    {
-      returnSourceDocuments: true,
-      inputKey: 'question',
-      // verbose: true,
-      questionGeneratorChainOptions: {
-        llm: openAiGenerator,
-        template: `
-          Dada a conversa e a pergunta a seguir, reformule a pergunta a seguir para ser uma pergunta independente.
+    questionGeneratorChain: new LLMChain({
+      llm: openAiGenerator,
+      prompt: PromptTemplate.fromTemplate(`
+        Dada a conversa e a pergunta a seguir, reformule a pergunta a seguir para ser uma pergunta independente.
 
-          Histórico da conversa:
-          {chat_history}
+        Histórico da conversa:
+        {chat_history}
 
-          Pergunta a seguir:
-          {question}
-        `.trim(),
-      },
-      qaChainOptions: {
-        type: 'stuff',
+        Pergunta a seguir:
+        {question}
+      `),
+    }),
+    combineDocumentsChain: new CombineDocsWithMetadataChain({
+      llmChain: new LLMChain({
+        llm: openAiChat,
         prompt: defaultPrompt,
-      },
-      memory,
-    },
-  )
+      }),
+      template: `Aula "{{title}}": {{pageContent}}`,
+    }),
+  })
 
   return houston
 }
