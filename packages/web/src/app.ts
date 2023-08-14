@@ -7,6 +7,7 @@ import { getChatByIdController } from './controllers/get-chat-by-id'
 import { searchRecentChatsController } from './controllers/search-recent-chats'
 import { getChatMessagesController } from './controllers/get-chat-messages'
 import { deleteChatByIdController } from './controllers/delete-chat-by-id'
+import { updateChatTitleByIdController } from './controllers/update-chat-title-by-id'
 import { webhooks } from './controllers/webhooks'
 
 import { verifyJWTMiddleware } from './middlewares/verify-jwt'
@@ -35,6 +36,7 @@ const routes = app
   .route('/', rateLimitMiddleware)
   .route('/', sendMessageController)
   .route('/', getChatByIdController)
+  .route('/', updateChatTitleByIdController)
   .route('/', deleteChatByIdController)
   .route('/', searchRecentChatsController)
   .route('/', getChatMessagesController)
