@@ -85,20 +85,10 @@ sendMessageController.post(
             handleLLMNewToken(token) {
               stream.writeJson({ token })
             },
-            handleChainEnd(response) {
-              if (response.sourceDocuments) {
-                const source =
-                  response.sourceDocuments.map((document: Document) => {
-                    const { jupiterId, title } = document.metadata
-
-                    return { jupiterId, title }
-                  }) ?? []
-
-                stream.writeJson({ source })
-              }
-            },
           },
         ])
+
+        console.log(response)
 
         const source =
           response.sourceDocuments?.map((document: Document) => {
@@ -106,6 +96,8 @@ sendMessageController.post(
 
             return { jupiterId, title }
           }) ?? []
+
+        stream.writeJson({ source })
 
         await db.insert(messages).values({
           id: responseMessageId,

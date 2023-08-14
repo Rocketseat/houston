@@ -35,10 +35,13 @@ export function createChainFromMemories(memories: Memory[]) {
 
   const houston = ConversationalRetrievalQAChain.fromLLM(
     openAiChat,
-    qdrantVectorStore.asRetriever(MAX_RETRIEVER_RESULTS),
+    qdrantVectorStore.asRetriever({
+      k: MAX_RETRIEVER_RESULTS,
+    }),
     {
       returnSourceDocuments: true,
       inputKey: 'question',
+      // verbose: true,
       questionGeneratorChainOptions: {
         llm: openAiGenerator,
         template: `
@@ -47,7 +50,7 @@ export function createChainFromMemories(memories: Memory[]) {
           Histórico da conversa:
           {chat_history}
 
-          Pergunta a seguir: 
+          Pergunta a seguir:
           {question}
         `.trim(),
       },

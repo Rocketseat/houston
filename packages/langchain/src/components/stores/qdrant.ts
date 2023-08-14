@@ -1,7 +1,8 @@
-import { QdrantVectorStore } from 'langchain/vectorstores/qdrant'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { TokenTextSplitter } from 'langchain/text_splitter'
 import { Document } from 'langchain/document'
+
+import { QdrantVectorStore } from './qdrant-vector-store'
 
 import { env } from '../../env'
 
@@ -24,6 +25,7 @@ const splitter = new TokenTextSplitter({
 export const qdrantVectorStore = new QdrantVectorStore(openAIEmbeddings, {
   url: env.QDRANT_URL,
   collectionName: 'videos',
+  scoreThreshold: 0.86,
 })
 
 export async function addVideos(videos: Video[]) {
