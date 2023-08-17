@@ -148,10 +148,12 @@ sendMessageController.post(
           text: response.text,
         })
 
-        await generateTitleForChat(currentChatId!, [
-          { role: 'user', text },
-          { role: 'assistant', text: response.text },
-        ])
+        if (isNewChat) {
+          await generateTitleForChat(currentChatId!, [
+            { role: 'user', text },
+            { role: 'assistant', text: response.text },
+          ])
+        }
       },
       {
         'Houston-ChatId': currentChatId,
