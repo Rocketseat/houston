@@ -1,5 +1,4 @@
 import { StuffDocumentsChain, StuffDocumentsChainInput } from 'langchain/chains'
-import { PromptTemplate } from 'langchain/prompts'
 import { Document } from 'langchain/document'
 import { ChainValues } from 'langchain/schema'
 

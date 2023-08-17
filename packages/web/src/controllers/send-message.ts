@@ -1,7 +1,11 @@
 import { Hono } from 'hono'
 import { HoustonApp } from '../types'
 import { zValidator } from '@hono/zod-validator'
-import { createChainFromMemories, Document } from '@houston/langchain'
+import {
+  createChainFromMemories,
+  generateTitleFromChatMessages,
+  Document,
+} from '@houston/langchain'
 import {
   sendMessageBody,
   SendMessageResponseHeaders,
@@ -15,7 +19,52 @@ import { redis } from '../lib/redis'
 import { HTTPException } from 'hono/http-exception'
 import { Snowflake } from '../util/snowflake'
 
+interface ChatMessage {
+  role: 'user' | 'assistant'
+  text: string
+}
+
 export const sendMessageController = new Hono<HoustonApp>()
+
+/* Rate limit amount of daily messages */
+sendMessageController.use('/messages', async (c, next) => {
+  const atlasUserId = c.get('atlasUserId')
+
+  const today = dayjs().format('YYYY-MM-DD')
+  const userDailyMessageCountRedisKey = `user:${atlasUserId}:${today}`
+
+  const result = await redis.get(userDailyMessageCountRedisKey)
+  const amountOfMessagesToday = Number(result) ?? 0
+
+  if (amountOfMessagesToday >= 100) {
+    throw new HTTPException(429)
+  }
+
+  await next()
+
+  await redis.set(userDailyMessageCountRedisKey, amountOfMessagesToday + 1, {
+    exat: dayjs().endOf('day').unix(),
+  })
+})
+
+async function getChatMemory(chatId: string) {
+  return await db
+    .select({ role: messages.role, text: messages.text })
+    .from(messages)
+    .where(eq(messages.chatId, chatId))
+    .orderBy(asc(messages.createdAt))
+}
+
+async function generateTitleForChat(chatId: string, history: ChatMessage[]) {
+  const generateTitle = generateTitleFromChatMessages(history)
+
+  const response = await generateTitle.call({ additional: ' ' })
+
+  await db
+    .update(chats)
+    .set({ title: response.text })
+    .where(eq(chats.id, chatId))
+}
 
 sendMessageController.post(
   '/messages',
@@ -23,55 +72,31 @@ sendMessageController.post(
   async (c) => {
     const snowflake = new Snowflake()
 
-    const { text, chatId, title } = c.req.valid('json')
+    const { text, chatId } = c.req.valid('json')
     const atlasUserId = c.get('atlasUserId')
+    const isNewChat = !chatId
 
-    const today = dayjs().format('YYYY-MM-DD')
-    const userDailyMessageCountRedisKey = `user:${atlasUserId}:${today}`
-
-    const result = await redis.get(userDailyMessageCountRedisKey)
-    const amountOfMessagesToday = Number(result) ?? 0
-
-    if (amountOfMessagesToday >= 100) {
-      throw new HTTPException(429)
-    }
-
-    let conversationMemory: Array<{
-      role: 'user' | 'assistant'
-      text: string
-    }> = []
-
+    let conversationMemory: ChatMessage[] = []
     let currentChatId = chatId
 
     if (!currentChatId) {
       const [chat] = await db
         .insert(chats)
-        .values({ atlasUserId, title })
+        .values({ atlasUserId, title: 'Novo chat' })
         .returning()
 
       currentChatId = chat.id
     } else {
-      conversationMemory = await db
-        .select({ role: messages.role, text: messages.text })
-        .from(messages)
-        .where(eq(messages.chatId, currentChatId))
-        .orderBy(asc(messages.createdAt))
+      conversationMemory = await getChatMemory(currentChatId)
     }
 
     const userMessageId = snowflake.getUniqueID()
 
-    const [{ dialogChatId }] = await db
-      .insert(messages)
-      .values({
-        id: userMessageId,
-        chatId: currentChatId,
-        role: 'user',
-        text,
-      })
-      .returning({ dialogChatId: messages.chatId })
-
-    await redis.set(userDailyMessageCountRedisKey, amountOfMessagesToday + 1, {
-      exat: dayjs().endOf('day').unix(),
+    await db.insert(messages).values({
+      id: userMessageId,
+      chatId: currentChatId,
+      role: 'user',
+      text,
     })
 
     const responseMessageId = snowflake.getUniqueID()
@@ -117,11 +142,18 @@ sendMessageController.post(
 
         await db.insert(messages).values({
           id: responseMessageId,
-          chatId: dialogChatId,
+          chatId: currentChatId!,
           role: 'assistant',
           source,
           text: response.text,
         })
+
+        if (isNewChat) {
+          await generateTitleForChat(currentChatId!, [
+            { role: 'user', text },
+            { role: 'assistant', text: response.text },
+          ])
+        }
       },
       {
         'Houston-ChatId': currentChatId,

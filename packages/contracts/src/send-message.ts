@@ -2,7 +2,6 @@ import { z } from 'zod'
 
 export const sendMessageBody = z.object({
   text: z.string(),
-  title: z.string(),
   jupiterVideoId: z.string().optional(),
   chatId: z.string().uuid().optional(),
 })
