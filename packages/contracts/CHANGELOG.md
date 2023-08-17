@@ -1,5 +1,11 @@
 # @rocketseat/houston-contracts
 
+## 0.2.0
+
+### Minor Changes
+
+- Remove title from send-message as its automatically generated now
+
 ## 0.1.8
 
 ### Patch Changes

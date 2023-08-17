@@ -5,6 +5,13 @@
 ### Patch Changes
 
 - Updated dependencies
+  - @rocketseat/houston-contracts@0.2.0
+
+## null
+
+### Patch Changes
+
+- Updated dependencies
   - @rocketseat/houston-contracts@0.1.8
 
 ## null
