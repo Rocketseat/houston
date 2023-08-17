@@ -29,6 +29,8 @@ export function generateTitleFromChatMessages(messages: Message[]) {
       """
 
       Gere um título de no máximo 5 palavras para identificar do que se trata a conversa atual.
+
+      Retorne o título sem ponto final.
       `.trim(),
     ),
     memory: new BufferMemory({
