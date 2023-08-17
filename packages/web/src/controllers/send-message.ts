@@ -88,14 +88,32 @@ sendMessageController.post(
           },
         ])
 
-        const source =
-          response.sourceDocuments?.map((document: Document) => {
-            const { jupiterId, title } = document.metadata
+        let source: Array<{ jupiterId: string; title: string }> = []
 
-            return { jupiterId, title }
-          }) ?? []
+        const sources:
+          | Document<{ jupiterId: string; title: string }>[]
+          | undefined = response?.sourceDocuments
 
-        stream.writeJson({ source })
+        if (sources) {
+          source = sources.reduce(
+            (uniqueSources, document) => {
+              const { jupiterId, title } = document.metadata
+
+              const documentInSources = uniqueSources.some(
+                (item) => item.jupiterId === jupiterId,
+              )
+
+              if (!documentInSources) {
+                uniqueSources.push({ jupiterId, title })
+              }
+
+              return uniqueSources
+            },
+            [] as typeof source,
+          )
+
+          stream.writeJson({ source })
+        }
 
         await db.insert(messages).values({
           id: responseMessageId,
