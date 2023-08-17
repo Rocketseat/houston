@@ -25,7 +25,7 @@ const splitter = new TokenTextSplitter({
 export const qdrantVectorStore = new QdrantVectorStore(openAIEmbeddings, {
   url: env.QDRANT_URL,
   collectionName: 'videos',
-  scoreThreshold: 0.85,
+  scoreThreshold: 0.83,
 })
 
 export async function addVideos(videos: Video[]) {
