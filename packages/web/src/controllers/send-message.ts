@@ -60,10 +60,13 @@ async function generateTitleForChat(chatId: string, history: ChatMessage[]) {
 
   const response = await generateTitle.call({ additional: ' ' })
 
-  await db
-    .update(chats)
-    .set({ title: response.text })
-    .where(eq(chats.id, chatId))
+  const title = response.text.endsWith('.')
+    ? response.text.slice(0, -1)
+    : response.text
+
+  console.log(title)
+
+  await db.update(chats).set({ title }).where(eq(chats.id, chatId))
 }
 
 sendMessageController.post(
