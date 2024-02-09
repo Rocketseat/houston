@@ -40,25 +40,24 @@ async function validateQstashSignature(body: string, signature: string | null) {
   }
 }
 
-const createOrUpdateVideoBody = z.object({
+const createOrUpdateVideoTranscriptionBody = z.object({
   videoId: z.string(),
   title: z.string(),
   transcription: z.string(),
 })
 
-const deleteVideoBody = z.object({
+const deleteVideoTranscriptionBody = z.object({
   videoId: z.string(),
 })
 
-webhooks.post('/create-video', async (c) => {
+webhooks.post('/create-video-transcription', async (c) => {
   const bodyAsText = await c.req.text()
   const signature = c.req.headers.get('Upstash-Signature')
 
   await validateQstashSignature(bodyAsText, signature)
 
-  const { videoId, title, transcription } = createOrUpdateVideoBody.parse(
-    JSON.parse(bodyAsText),
-  )
+  const { videoId, title, transcription } =
+    createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
   await addVideos([
     {
@@ -71,15 +70,14 @@ webhooks.post('/create-video', async (c) => {
   return new Response()
 })
 
-webhooks.post('/update-video', async (c) => {
+webhooks.post('/update-video-transcription', async (c) => {
   const bodyAsText = await c.req.text()
   const signature = c.req.headers.get('Upstash-Signature')
 
   await validateQstashSignature(bodyAsText, signature)
 
-  const { videoId, title, transcription } = createOrUpdateVideoBody.parse(
-    JSON.parse(bodyAsText),
-  )
+  const { videoId, title, transcription } =
+    createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
   await removeVideo(videoId)
   await addVideos([
@@ -93,13 +91,13 @@ webhooks.post('/update-video', async (c) => {
   return new Response()
 })
 
-webhooks.post('/delete-video', async (c) => {
+webhooks.post('/delete-video-transcription', async (c) => {
   const bodyAsText = await c.req.text()
   const signature = c.req.headers.get('Upstash-Signature')
 
   await validateQstashSignature(bodyAsText, signature)
 
-  const { videoId } = deleteVideoBody.parse(JSON.parse(bodyAsText))
+  const { videoId } = deleteVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
   await removeVideo(videoId)
 
