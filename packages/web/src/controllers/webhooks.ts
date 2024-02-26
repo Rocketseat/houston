@@ -47,11 +47,6 @@ async function validateQstashSignature(body: string, signature: string | null) {
 }
 
 async function validateNivoSignature(signature: string | null) {
-  // if (env.NODE_ENV === 'development') {
-  //   // Bypass signature verification in development
-  //   return
-  // }
-
   if (!signature) {
     throw new HTTPException(401)
   }
