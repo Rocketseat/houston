@@ -12,6 +12,14 @@ interface Video {
   transcription: string
 }
 
+interface VideoMetadata {
+  jupiterId: string
+  title: string
+  journeyIds: string[]
+  journeyNodeIds: string[]
+  lessonGroupIds: string[]
+}
+
 const openAIEmbeddings = new OpenAIEmbeddings({
   openAIApiKey: env.OPENAI_API_KEY,
 })
@@ -55,6 +63,27 @@ export async function removeVideo(videoId: string) {
           },
         },
       ],
+    },
+  })
+}
+
+export async function updateVideoMetadata(
+  videoId: string,
+  metadata: VideoMetadata,
+) {
+  await qdrantVectorStore.client.setPayload(qdrantVectorStore.collectionName, {
+    filter: {
+      must: [
+        {
+          key: 'metadata.jupiterId',
+          match: {
+            value: videoId,
+          },
+        },
+      ],
+    },
+    payload: {
+      metadata,
     },
   })
 }

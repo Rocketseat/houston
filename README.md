@@ -31,7 +31,7 @@ The seeder includes data from **252 lessons** of React Ignite trail.
 ### Use the API (HTTPie recommended)
 
 ```sh
-http --stream POST localhost:3333/messages text="O que é Redux?" title="Sample chat" --auth-type bearer --auth "VALID_SKYLAB_JWT"
+http --stream POST localhost:3000/api/messages text="O que é Redux?" title="Sample chat" --auth-type bearer --auth "VALID_SKYLAB_JWT"
 ```
 
 ### V2
