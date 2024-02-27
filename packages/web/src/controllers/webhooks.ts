@@ -376,7 +376,7 @@ webhooks.post('/nivo', async (c) => {
   }
 })
 
-webhooks.post('/lesson/migrate', async (c) => {
+webhooks.post('/lesson/import', async (c) => {
   const secret = c.req.raw.headers.get('Migration-Secret')
   const body = await c.req.json()
 
