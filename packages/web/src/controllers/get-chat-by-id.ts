@@ -31,7 +31,7 @@ getChatByIdController.get(
 
     const chat = results[0]
 
-    return c.jsonT<GetChatByIdResponse>({
+    return c.json<GetChatByIdResponse>({
       chat: {
         id: chat.id,
         title: chat.title,

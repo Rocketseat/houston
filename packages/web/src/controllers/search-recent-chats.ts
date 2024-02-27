@@ -43,7 +43,7 @@ searchRecentChatsController.get('/chats', async (c) => {
 
   const totalCount = countResult[0].count
 
-  return c.jsonT<GetRecentChatsResponse>({
+  return c.json<GetRecentChatsResponse>({
     totalCount,
     chats: results.map((chat) => {
       return {

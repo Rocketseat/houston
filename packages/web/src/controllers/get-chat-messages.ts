@@ -51,7 +51,7 @@ getChatMessagesController.get(
 
     const totalCount = countResult[0].count
 
-    return c.jsonT<GetChatMessagesResponse>({
+    return c.json<GetChatMessagesResponse>({
       totalCount,
       messages: result.map((message) => {
         return {

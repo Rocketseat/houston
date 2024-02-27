@@ -1,0 +1,1 @@
+ALTER TABLE "lessons" ADD CONSTRAINT "lessons_jupiter_video_id_unique" UNIQUE("jupiter_video_id");

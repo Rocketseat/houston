@@ -20,6 +20,7 @@ const envSchema = z.object({
   QSTASH_NEXT_SIGNING_KEY: z.string().refine(requiredOnEnv('production')),
   UPSTASH_REDIS_REST_URL: z.string().url(),
   UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
+  NIVO_SIGNING_KEY: z.string().refine(requiredOnEnv('production')),
 })
 
 export const env = envSchema.parse(process.env)
