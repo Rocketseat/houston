@@ -67,6 +67,28 @@ export async function removeVideo(videoId: string) {
   })
 }
 
+export async function getVideo(videoId: string) {
+  const response = await qdrantVectorStore.client.scroll(
+    qdrantVectorStore.collectionName,
+    {
+      with_vector: false,
+      with_payload: false,
+      filter: {
+        must: [
+          {
+            key: 'metadata.jupiterId',
+            match: {
+              value: videoId,
+            },
+          },
+        ],
+      },
+    },
+  )
+
+  return response
+}
+
 export async function updateVideoMetadata(
   videoId: string,
   metadata: VideoMetadata,

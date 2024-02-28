@@ -8,6 +8,7 @@ import {
   addVideos,
   removeVideo,
   updateVideoMetadata,
+  getVideo,
 } from '@houston/langchain/src/components/stores/qdrant'
 import { lessonMetadata, lessons } from '../db/schema'
 import { db } from '../db'
@@ -373,4 +374,110 @@ webhooks.post('/nivo', async (c) => {
       return c.json({ error: 'Invalid trigger' }, { status: 400 })
     }
   }
+})
+
+webhooks.post('/lesson/import', async (c) => {
+  const secret = c.req.raw.headers.get('Migration-Secret')
+  const body = await c.req.json()
+
+  if (secret !== env.MIGRATION_SECRET) {
+    return c.json({ message: 'Invalid secret' }, { status: 401 })
+  }
+
+  const transcriptionMetadata = await getVideo(body.jupiterVideoId)
+  const hasTranscription = transcriptionMetadata.points.length > 0
+
+  if (!hasTranscription) {
+    return c.json({ message: 'Lesson skipped' })
+  }
+
+  const { title, journeyId, journeyNodeId, lessonGroupId, jupiterVideoId } =
+    body
+
+  const lessonResult = await db
+    .select()
+    .from(lessons)
+    .where(eq(lessons.jupiterVideoId, jupiterVideoId))
+
+  let lesson = lessonResult[0]
+
+  if (!lesson) {
+    const insertResult = await db
+      .insert(lessons)
+      .values({
+        jupiterVideoId,
+        title,
+      })
+      .returning({
+        id: lessons.id,
+        jupiterVideoId: lessons.jupiterVideoId,
+        title: lessons.title,
+        createdAt: lessons.createdAt,
+      })
+
+    lesson = insertResult[0]
+  }
+
+  const metadata = await db
+    .select()
+    .from(lessonMetadata)
+    .where(
+      and(
+        eq(lessonMetadata.lessonId, lesson.id),
+        eq(lessonMetadata.journeyId, journeyId),
+        eq(lessonMetadata.journeyNodeId, journeyNodeId),
+        eq(lessonMetadata.lessonGroupId, lessonGroupId),
+      ),
+    )
+
+  const metadataExists = metadata.length > 0
+
+  if (!metadataExists) {
+    await db.insert(lessonMetadata).values({
+      lessonId: lesson.id,
+      journeyId,
+      journeyNodeId,
+      lessonGroupId,
+    })
+  }
+
+  const metadataAfterCreate = await db
+    .select()
+    .from(lessonMetadata)
+    .where(eq(lessonMetadata.lessonId, lesson.id))
+    .groupBy(
+      lessonMetadata.id,
+      lessonMetadata.journeyId,
+      lessonMetadata.journeyNodeId,
+      lessonMetadata.lessonGroupId,
+    )
+
+  const mappedMetadata = metadataAfterCreate.reduce(
+    (acc, curr) => {
+      if (!acc.journeyIds.includes(curr.journeyId)) {
+        acc.journeyIds.push(curr.journeyId)
+      }
+
+      if (!acc.journeyNodeIds.includes(curr.journeyNodeId)) {
+        acc.journeyNodeIds.push(curr.journeyNodeId)
+      }
+
+      if (!acc.lessonGroupIds.includes(curr.lessonGroupId)) {
+        acc.lessonGroupIds.push(curr.lessonGroupId)
+      }
+
+      return acc
+    },
+    {
+      journeyIds: [] as string[],
+      journeyNodeIds: [] as string[],
+      lessonGroupIds: [] as string[],
+      jupiterId: lesson.jupiterVideoId,
+      title: lesson.title,
+    },
+  )
+
+  await updateVideoMetadata(jupiterVideoId, mappedMetadata)
+
+  return c.json({ ok: true })
 })
