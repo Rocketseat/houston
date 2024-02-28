@@ -367,7 +367,7 @@ webhooks.post('/nivo', async (c) => {
 
       await removeVideo(id)
 
-      return new Response(null, { status: 201 })
+      return new Response(null, { status: 204 })
     }
 
     default: {
