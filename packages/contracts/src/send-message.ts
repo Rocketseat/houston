@@ -2,8 +2,15 @@ import { z } from 'zod'
 
 export const sendMessageBody = z.object({
   text: z.string(),
-  jupiterVideoId: z.string().optional(),
   chatId: z.string().uuid().optional(),
+  chatContext: z
+    .object({
+      jupiterVideoId: z.string().optional(),
+      journeyId: z.string().optional(),
+      lessonGroupIds: z.array(z.string()).optional(),
+      journeyNodeId: z.string().optional(),
+    })
+    .optional(),
 })
 
 export const sendMessageResponse = z

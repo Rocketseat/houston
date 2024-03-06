@@ -111,12 +111,20 @@ export class QdrantVectorStore extends VectorStore {
 
     await this.ensureCollection()
 
-    const results = await this.client.search(this.collectionName, {
+    let results = await this.client.search(this.collectionName, {
       vector: query,
       limit: k,
       filter,
       score_threshold: this.scoreThreshold,
     })
+
+    if (filter && results.length === 0) {
+      results = await this.client.search(this.collectionName, {
+        vector: query,
+        limit: k,
+        score_threshold: this.scoreThreshold,
+      })
+    }
 
     const result: [Document, number][] = (
       results as QdrantSearchResponse[]
