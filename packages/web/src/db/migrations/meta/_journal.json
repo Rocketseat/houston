@@ -29,6 +29,13 @@
       "when": 1707923938113,
       "tag": "0003_last_gargoyle",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1709640584412,
+      "tag": "0004_glossy_warbound",
+      "breakpoints": true
     }
   ]
 }

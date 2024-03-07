@@ -39,6 +39,15 @@ export const messages = pgTable('messages', {
     .$type<Array<{ jupiterId: string; title: string }>>()
     .notNull()
     .default([]),
+  originMetadata: json('origin_metadata')
+    .$type<{
+      jupiterId?: string
+      lessonGroupIds?: string[]
+      journeyNodeId?: string
+      journeyId?: string
+    }>()
+    .notNull()
+    .default({} as any),
   text: text('text').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()

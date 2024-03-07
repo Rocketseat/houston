@@ -1,0 +1,1 @@
+ALTER TABLE "messages" ADD COLUMN "origin_metadata" json DEFAULT '{}'::json NOT NULL;

@@ -69,14 +69,38 @@ async function generateTitleForChat(chatId: string, history: ChatMessage[]) {
   await db.update(chats).set({ title }).where(eq(chats.id, chatId))
 }
 
+type QDrantFilterReturn =
+  | {
+      key: string
+      match: { value: string }
+    }
+  | {
+      key: string
+      match: { any: string[] }
+    }
+
+function createQDrantFilter(
+  key: string,
+  value: string | string[] | undefined,
+  isAny = false,
+): QDrantFilterReturn | null {
+  return value !== undefined
+    ? ({
+        key,
+        match: isAny ? { any: value as string[] } : { value: value as string },
+      } as QDrantFilterReturn)
+    : null
+}
+
 sendMessageController.post(
   '/messages',
   zValidator('json', sendMessageBody),
   async (c) => {
     const snowflake = new Snowflake()
 
-    const { text, chatId } = c.req.valid('json')
+    const { text, chatId, chatContext } = c.req.valid('json')
     const atlasUserId = c.get('atlasUserId')
+
     const isNewChat = !chatId
 
     let conversationMemory: ChatMessage[] = []
@@ -100,13 +124,32 @@ sendMessageController.post(
       chatId: currentChatId,
       role: 'user',
       text,
+      originMetadata: chatContext,
     })
 
     const responseMessageId = snowflake.getUniqueID()
 
+    const filtersToApply = [
+      createQDrantFilter('metadata.jupiterId', chatContext?.jupiterVideoId),
+      createQDrantFilter(
+        'metadata.lessonGroupIds',
+        chatContext?.lessonGroupIds,
+        true,
+      ),
+      createQDrantFilter('metadata.journeyNodeIds', chatContext?.journeyNodeId),
+      createQDrantFilter('metadata.journeyId', chatContext?.journeyId),
+    ].filter((filter) => filter !== null) as QDrantFilterReturn[]
+
+    const filter = {
+      should: filtersToApply,
+    }
+
     return textStream(
       async (stream) => {
-        const houston = createChainFromMemories(conversationMemory)
+        const houston = createChainFromMemories(
+          conversationMemory,
+          filtersToApply ? { filter } : {},
+        )
 
         const response = await houston.call({ question: text }, [
           {
@@ -143,16 +186,22 @@ sendMessageController.post(
           stream.writeJson({ source })
         }
 
+        if (!currentChatId) {
+          throw new HTTPException(404, {
+            message: 'Chat not found',
+          })
+        }
+
         await db.insert(messages).values({
           id: responseMessageId,
-          chatId: currentChatId!,
+          chatId: currentChatId,
           role: 'assistant',
           source,
           text: response.text,
         })
 
         if (isNewChat) {
-          await generateTitleForChat(currentChatId!, [
+          await generateTitleForChat(currentChatId, [
             { role: 'user', text },
             { role: 'assistant', text: response.text },
           ])
