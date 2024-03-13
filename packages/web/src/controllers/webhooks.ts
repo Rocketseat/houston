@@ -102,7 +102,7 @@ webhooks.post('/sync-lesson-metadata', async (c) => {
       .where(eq(lessons.jupiterVideoId, jupiterId))
 
     if (lessonResult.length === 0) {
-      return c.json({ message: 'Video does not exist.' }, { status: 400 })
+      return c.json({ message: 'Video does not exist.' })
     }
 
     const lesson = lessonResult[0]
