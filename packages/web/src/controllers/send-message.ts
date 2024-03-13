@@ -144,11 +144,20 @@ sendMessageController.post(
       should: filtersToApply,
     }
 
+    const questionType: 'support' | 'technical' = 'support'
+
+    const filterObject = filtersToApply ? { filter } : {}
+
+    const chainOptions = {
+      ...filterObject,
+      questionType,
+    }
+
     return textStream(
       async (stream) => {
         const houston = createChainFromMemories(
           conversationMemory,
-          filtersToApply ? { filter } : {},
+          chainOptions,
         )
 
         const response = await houston.call({ question: text }, [
@@ -165,7 +174,11 @@ sendMessageController.post(
           | Document<{ jupiterId: string; title: string }>[]
           | undefined = response?.sourceDocuments
 
-        if (sources) {
+        const questionTypesAllowedToReturnSources = ['technical']
+        const shouldReturnSources =
+          questionTypesAllowedToReturnSources.includes(questionType)
+
+        if (sources && shouldReturnSources) {
           source = sources.reduce(
             (uniqueSources, document) => {
               const { jupiterId, title } = document.metadata

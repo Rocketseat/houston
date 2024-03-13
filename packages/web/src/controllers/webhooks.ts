@@ -1,20 +1,17 @@
-import { Hono } from 'hono'
-import { HoustonApp } from '../types'
+import { VideoService } from '@houston/langchain/src/services/VideoService'
 import { Receiver } from '@upstash/qstash/cloudflare'
-import { env } from '../env'
+import { and, eq } from 'drizzle-orm'
+import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import { z } from 'zod'
-import {
-  addVideos,
-  removeVideo,
-  updateVideoMetadata,
-  getVideo,
-} from '@houston/langchain/src/components/stores/qdrant'
-import { lessonMetadata, lessons } from '../db/schema'
 import { db } from '../db'
-import { and, eq } from 'drizzle-orm'
+import { lessonMetadata, lessons } from '../db/schema'
+import { env } from '../env'
+import { HoustonApp } from '../types'
 
 import { jwtVerify } from 'jose'
+
+const videoService = new VideoService()
 
 export const webhooks = new Hono<HoustonApp>()
 
@@ -172,7 +169,7 @@ webhooks.post('/sync-lesson-metadata', async (c) => {
           },
         )
 
-        await updateVideoMetadata(jupiterId, mappedMetadata)
+        await videoService.updateVideoMetadata(jupiterId, mappedMetadata)
 
         return c.json({ ok: true }, { status: 201 })
       }
@@ -230,7 +227,7 @@ webhooks.post('/sync-lesson-metadata', async (c) => {
           },
         )
 
-        await updateVideoMetadata(jupiterId, mappedMetadata)
+        await videoService.updateVideoMetadata(jupiterId, mappedMetadata)
 
         return new Response(null, {
           status: 204,
@@ -265,20 +262,21 @@ webhooks.post('/create-video', async (c) => {
 
     return new Response(null, { status: 201 })
   } catch (err: any) {
+    console.log(err)
     return c.json({ error: err.message }, { status: 400 })
   }
 })
 
 webhooks.post('/create-video-transcription', async (c) => {
   const bodyAsText = await c.req.text()
-  const signature = c.req.raw.headers.get('Upstash-Signature')
+  // const signature = c.req.raw.headers.get('Upstash-Signature')
 
-  await validateQstashSignature(bodyAsText, signature)
+  // await validateQstashSignature(bodyAsText, signature)
 
   const { videoId, title, transcription } =
     createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
-  await addVideos([
+  await videoService.addVideos([
     {
       id: videoId,
       title,
@@ -298,8 +296,8 @@ webhooks.post('/update-video-transcription', async (c) => {
   const { videoId, title, transcription } =
     createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
-  await removeVideo(videoId)
-  await addVideos([
+  await videoService.removeVideo(videoId)
+  await videoService.addVideos([
     {
       id: videoId,
       title,
@@ -319,7 +317,7 @@ webhooks.post('/delete-video-transcription', async (c) => {
   const { videoId } = deleteVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
   await db.delete(lessons).where(eq(lessons.jupiterVideoId, videoId))
-  await removeVideo(videoId)
+  await videoService.removeVideo(videoId)
 
   return new Response()
 })
@@ -361,7 +359,7 @@ webhooks.post('/nivo', async (c) => {
 
       const lesson = lessonToFind[0]
 
-      await addVideos([
+      await videoService.addVideos([
         {
           id: uploadId,
           title: lesson.title,
@@ -377,7 +375,7 @@ webhooks.post('/nivo', async (c) => {
 
       await db.delete(lessons).where(eq(lessons.jupiterVideoId, id))
 
-      await removeVideo(id)
+      await videoService.removeVideo(id)
 
       return new Response(null, { status: 204 })
     }
@@ -396,7 +394,7 @@ webhooks.post('/lesson/import', async (c) => {
     return c.json({ message: 'Invalid secret' }, { status: 401 })
   }
 
-  const transcriptionMetadata = await getVideo(body.jupiterVideoId)
+  const transcriptionMetadata = await videoService.getVideo(body.jupiterVideoId)
   const hasTranscription = transcriptionMetadata.points.length > 0
 
   if (!hasTranscription) {
@@ -489,7 +487,7 @@ webhooks.post('/lesson/import', async (c) => {
     },
   )
 
-  await updateVideoMetadata(jupiterVideoId, mappedMetadata)
+  await videoService.updateVideoMetadata(jupiterVideoId, mappedMetadata)
 
   return c.json({ ok: true })
 })

@@ -3,4 +3,4 @@ export * from 'langchain/document'
 
 export { createChainFromMemories } from './chains/houston'
 export { generateTitleFromChatMessages } from './chains/generate-title'
-export { qdrantVectorStore } from './components/stores/qdrant'
+export { createQDrantVectorInstance } from './components/stores/qdrant'
