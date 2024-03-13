@@ -360,12 +360,12 @@ webhooks.post('/nivo', async (c) => {
     }
 
     case 'upload.transcription.created': {
-      const { id, text: transcription } = payload
+      const { uploadId, text: transcription } = payload
 
       const lessonToFind = await db
         .select()
         .from(lessons)
-        .where(eq(lessons.jupiterVideoId, id))
+        .where(eq(lessons.jupiterVideoId, uploadId))
 
       if (lessonToFind.length === 0) {
         return c.json({ message: 'Video does not exist.' }, { status: 400 })
@@ -375,7 +375,7 @@ webhooks.post('/nivo', async (c) => {
 
       await addVideos([
         {
-          id,
+          id: uploadId,
           title: lesson.title,
           transcription,
         },
