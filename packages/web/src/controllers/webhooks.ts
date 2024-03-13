@@ -240,6 +240,7 @@ webhooks.post('/sync-lesson-metadata', async (c) => {
         throw new Error('Invalid action')
     }
   } catch (err) {
+    console.log(err)
     return c.json(
       { message: 'Error updating metadata.', error: err },
       { status: 400 },
