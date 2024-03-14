@@ -275,25 +275,13 @@ webhooks.post('/create-video-transcription', async (c) => {
 
   await validateQstashSignature(bodyAsText, signature)
 
-  const { videoId, transcription } = createOrUpdateVideoTranscriptionBody.parse(
-    JSON.parse(bodyAsText),
-  )
-
-  const lessonToFind = await db
-    .select()
-    .from(lessons)
-    .where(eq(lessons.jupiterVideoId, videoId))
-
-  if (lessonToFind.length === 0) {
-    return c.json({ message: 'Video does not exist.' }, { status: 400 })
-  }
-
-  const lesson = lessonToFind[0]
+  const { videoId, title, transcription } =
+    createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
 
   await addVideos([
     {
       id: videoId,
-      title: lesson.title,
+      title,
       transcription,
     },
   ])
