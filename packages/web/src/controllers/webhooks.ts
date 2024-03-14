@@ -269,9 +269,9 @@ webhooks.post('/create-video', async (c) => {
 
 webhooks.post('/create-video-transcription', async (c) => {
   const bodyAsText = await c.req.text()
-  // const signature = c.req.raw.headers.get('Upstash-Signature')
+  const signature = c.req.raw.headers.get('Upstash-Signature')
 
-  // await validateQstashSignature(bodyAsText, signature)
+  await validateQstashSignature(bodyAsText, signature)
 
   const { videoId, title, transcription } =
     createOrUpdateVideoTranscriptionBody.parse(JSON.parse(bodyAsText))
