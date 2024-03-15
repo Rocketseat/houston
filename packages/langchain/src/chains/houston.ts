@@ -13,11 +13,6 @@ import { getPrompt } from '../components/prompts'
 
 const MAX_RETRIEVER_RESULTS = 3
 
-export interface Memory {
-  role: 'user' | 'assistant'
-  text: string
-}
-
 type FilterOptions = components['schemas']['Filter']
 
 interface Options {
@@ -36,19 +31,13 @@ function getCollectionName(type: string) {
   }
 }
 
+type Memory = AIMessage | HumanMessage
+
 export function createChainFromMemories(memories: Memory[], options: Options) {
   const { filter, questionType } = options
 
-  const pastMessages = memories.map((memory) => {
-    if (memory.role === 'user') {
-      return new HumanMessage(memory.text)
-    } else {
-      return new AIMessage(memory.text)
-    }
-  })
-
   const memory = new BufferMemory({
-    chatHistory: new ChatMessageHistory(pastMessages),
+    chatHistory: new ChatMessageHistory(memories),
     aiPrefix: 'IA:',
     humanPrefix: 'Humano:',
     memoryKey: 'chat_history',
@@ -87,9 +76,14 @@ export function createChainFromMemories(memories: Memory[], options: Options) {
     template: `Aula "{{title}}": {{pageContent}}`,
   })
 
+  const questionTypesAllowedToReturnSources = ['technical']
+
+  const shouldReturnSources =
+    questionTypesAllowedToReturnSources.includes(questionType)
+
   const houston = new ConversationalRetrievalQAChain({
     inputKey: 'question',
-    returnSourceDocuments: true,
+    returnSourceDocuments: shouldReturnSources,
     memory,
     retriever: qDrantRetriever,
     questionGeneratorChain,

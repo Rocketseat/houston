@@ -127,7 +127,6 @@ export class QdrantVectorStore extends VectorStore {
       })
     }
 
-    console.log(results)
     const result: [Document, number][] = (
       results as QdrantSearchResponse[]
     ).map((res) => [
