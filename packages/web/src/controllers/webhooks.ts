@@ -1,4 +1,3 @@
-import { VideoService } from '@houston/langchain/src/services/VideoService'
 import { Receiver } from '@upstash/qstash/cloudflare'
 import { and, eq } from 'drizzle-orm'
 import { Hono } from 'hono'
@@ -10,8 +9,10 @@ import { env } from '../env'
 import { HoustonApp } from '../types'
 
 import { jwtVerify } from 'jose'
+import { CommonQuestionsService, VideoService } from '@houston/langchain'
 
 const videoService = new VideoService()
+const commonQuestionsService = new CommonQuestionsService()
 
 export const webhooks = new Hono<HoustonApp>()
 
@@ -488,6 +489,28 @@ webhooks.post('/lesson/import', async (c) => {
   )
 
   await videoService.updateVideoMetadata(jupiterVideoId, mappedMetadata)
+
+  return c.json({ ok: true })
+})
+
+webhooks.post('/faq/import', async (c) => {
+  const secret = c.req.raw.headers.get('Migration-Secret')
+  const body = await c.req.json()
+
+  if (secret !== env.MIGRATION_SECRET) {
+    return c.json({ message: 'Invalid secret' }, { status: 401 })
+  }
+
+  const { id, title, answer, category } = body
+
+  const question = {
+    id,
+    title,
+    answer,
+    category,
+  }
+
+  await commonQuestionsService.addQuestions([question])
 
   return c.json({ ok: true })
 })

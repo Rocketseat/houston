@@ -1,3 +1,6 @@
+export { CommonQuestionsService } from './services/CommonQuestionsService'
+export { VideoService } from './services/VideoService'
+
 export * from 'langchain/schema'
 export * from 'langchain/document'
 

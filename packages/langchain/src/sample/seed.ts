@@ -13,7 +13,7 @@ async function main() {
     return {
       id: crypto.randomUUID(),
       title: question.title,
-      answer: question.body,
+      answer: `${question.title} - ${question.body}`,
       category: question.category,
     }
   })

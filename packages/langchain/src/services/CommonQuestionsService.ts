@@ -29,7 +29,7 @@ export class CommonQuestionsService {
   async addQuestions(questions: Question[]) {
     const documents = questions.map((question) => {
       return new Document({
-        pageContent: `${question.title} ${question.answer}`,
+        pageContent: question.answer,
         metadata: {
           id: question.id,
           title: question.title,
