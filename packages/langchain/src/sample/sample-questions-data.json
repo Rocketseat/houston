@@ -1,0 +1,322 @@
+[
+  {
+    "title": "Durante a assinatura, recebo acesso às atualizações?",
+    "body": "Durante todo o período de assinatura vigente, você receberá acesso a todos os conteúdos atualizados de formações, eventos passados e conteúdos complementares que forem disponibilizados na plataforma e estiverem inclusos em sua assinatura 🚀  Ou seja, se você tem acesso aos conteúdos da formação de ReactJS e novos conteúdos são inseridos na plataforma, você tem acesso aos mesmos normalmente - até o final de seu tempo de acesso.",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Tenho uma sugestão. Onde devo enviá-la?",
+    "body": "Legal! Adoramos receber feedbacks e sugestões.  Você pode nos enviar por e-mail no oi@rocketseat.com.br com o título [Sugestão] Texto de sua sugestão.  Estaremos sempre à disposição para te ouvir e acolhar as sugestões de melhorias para a plataforma, os programas e a comunidade.",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "O que foi o Rocketseat Plus?",
+    "body": "Todos os dias surgem novas ferramentas, encontramos formas melhores de resolver os problemas, os casos de uso trazem novos desafios, e tanto a prática quanto a teoria vão se abastecendo das nossas experiências e descobertas.  Resumindo: se a tecnologia não para de evoluir, nós não podemos parar de aprender.  O Experts Club mudou e agora é Rocketseat Plus.  No Plus, você tem acesso a um universo onde vai poder absorver o conhecimento e a experiência acumulada de empresas como 99Taxi, Zé Delivery, Creditas, Localiza, Microsoft, Loggi, Bossabox, além de conteúdos de Maratonas, NLWs e eventos da Rocketseat.  Ele não é apenas o seu passaporte para todo o conhecimento e experiência do mercado, mas também é o espaço onde essas e esses profissionais incríveis poderão se expressar, e ensinar tudo aquilo que estão aprendendo no mundo real.  Imagine que uma empresa masterizou a utilização do micro frontend, e hoje eles podem contratar devs independente do framework que utilizam, porque todas as peças se juntam em uma única interface no final.  Mas tirando os eventos onde eles palestram ou um blog técnico que eventualmente eles mantêm, é difícil acessar essa experiência.  Eles não possuem nem espaço nem incentivo para compartilhar esse conhecimento.  O Plus vem para conectar profissionais de tecnologia através da educação.  Não são cursos. São aulas sobre assuntos específicos que esses experts dominam na prática. Direto ao ponto.  Porque aqui na Rocketseat, nosso trabalho é te ajudar a ganhar tempo e ser mais eficiente na jornada de aprendizado contínuo 🚀     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Quais são as formas de pagamento que eu posso usar?",
+    "body": "Atualmente, a plataforma aceita pagamento por meio de cartão de crédito, boleto bancário e pix. Você pode fazer a assinatura diretamente em nosso site.  Posso parcelar a assinatura?  ✔️ Você pode parcelar a assinatura em até 12X sem juros, no cartão de crédito, diretamente no carrinho. O valor da assinatura é debitado em sua totalidade do saldo do cartão.  Moro em outro país, posso assinar?  🌎 Claro! Se você mora fora do Brasil, pode assinar um dos programas da Rocketseat utilizando o Paypal. Para isso, precisamos das informações abaixo:  Nome:  E-mail:  Endereço:  NIRE (ou qualquer número de documento de identificação que se assemelhe ao CPF):  Plano escolhido:  E é só mandar pra gente no oi@rocketseat.com.br  Enviaremos um e-mail com o link de pagamento da compra internacional, e assim que estiver tudo certo, liberamos seu acesso!  Importante: compras internacionais não podem ser parceladas.     ",
+    "category": "Pagamento e Renovação"
+  },
+  {
+    "title": "Quais trilhas estarão disponíveis ao me inscrever no Ignite?",
+    "body": "Atualmente as trilhas disponíveis no Ignite são as de ReactJs, Node.js, React Native, Desenvolvimento de IA e Java.  📌 A trilha de ReactJs traz muito conteúdo específico da biblioteca, mas não deixamos de abordar o uso de diversas outras ferramentas comumente usadas em todo ecossistema front-end. Trazemos também conteúdos sobre Next.js, que ganha cada vez mais espaço nas aplicações desenvolvidas utilizando o ReactJs hoje em dia.  📌 A trilha de Node.js possui foco total em back-end, para criação de API's escaláveis, modernas e simples, utilizando uma linguagem moderna e muito popular também na Web. Abordamos os fundamentos na criação de API's utilizando o padrão RESTful, métodos HTTP, padrões de código, princípios SOLID, documentação, testes automatizados, banco de dados e muito mais! E claro, sem deixar de fora os processos de deploy na AWS e fluxos CI/CD no Github Actions, fazendo o monitoramento de erros e performance da aplicação publicada.  📌 A trilha de React Native foca em duas principais plataformas: Android e iOS. Abordamos desde conceitos fundamentais do React e React Native até a realização de build e deploy para as lojas (Apple Store e Play Store). Além disso, ao longo da jornada trazemos diversos pontos muito utilizados em aplicações mobile atualmente como armazenamento local, notificações push, animações e micro interações, offline first e vários outros, tudo isso em conjunto com o poderoso framework Expo e seus serviços gratuitos.  E ainda temos duas novas trilhas, focadas em Desenvolvimento de IA e Java, que acabaram de chegar para agregar ainda mais na trilha de conhecimentos do Ignite 💜  Além de todo o conteúdo atual, temos como objetivo trazer cada vez mais tecnologias para dentro do Ignite e você, durante todo o período de assinante com pacote ativo, receberá acesso a qualquer nova trilha adicionada sem pagar nada a mais por isso!     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Quanto tempo preciso me dedicar diariamente aos estudos?",
+    "body": "A frequência nos estudos é mais importante que o período de tempo dedicado. Estudar todos os dias ajuda a fixar o conhecimento por você manter o contato recorrente com a programação. Portanto, é preferível que você estude por um período de tempo menor diariamente que por muitas horas em um único dia da semana, por exemplo.  Em relação ao período de tempo, recomendamos em torno de 1h30 de estudo por dia. Porém, é importante lembrar que cada pessoa tem seu próprio ritmo e você não deve se comparar com outras pessoas. Apenas foque na sua própria evolução!  Entender a sua rotina e criar um cronograma de estudos que faça sentido para você é o melhor caminho para chegar no próximo nível 🚀     ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Como cancelar a minha assinatura?",
+    "body": "Ao adquirir qualquer um dos nossos planos de assinatura, você tem período de garantia incondicional para solicitar o seu reembolso integral. Essa garantia começa a contar após a sua inscrição.  📌 Os períodos de cada plano é são:   * Plus: 7 dias;  * Ignite: 15 dias;  * Explorer: 15 dias.          📌 Para realizar a solicitação de seu cancelamento dentro do período de garantia, você deve nos enviar um e-mail em oi@rocketseat.com.br informando o motivo de sua solicitação. Dessa forma, nosso time responsável entrará em contato com você e conseguirá te auxiliar.     Importante ⚠️  Durante esse período, a Rocketseat se responsabiliza por problemas técnicos e dúvidas que possam surgir no acesso ao material, e, caso não seja possível solucioná-los, ou você opte pelo reembolso, será realizada a devolução do valor investido por você.  No entanto, após o término do período de garantia, não é possível realizar o cancelamento com estorno de qualquer valor, uma vez que o aluno(a) já teve acesso aos conteúdos e demais recursos da plataforma, sem manifestar quaisquer interesse de cancelamento durante o período de garantia.  Caso você tenha qualquer dúvida sobre os termos de garantia do acesso ao material, recomendamos que entre em contato com a equipe de Suporte da Rocketseat para obter mais informações.     ",
+    "category": "Pagamento e Renovação"
+  },
+  {
+    "title": "O Explorer possui certificação?",
+    "body": "Sim, o Explorer possui certificação! Após concluir o programa, você realizará o desafio final, que tem o intuito de simular a realidade do mercado de trabalho para garantir que você está pronto(a) para seguir sua jornada, e também receber o seu certificado de conclusão.  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Posso fazer o download das aulas do NLW para assistir depois?",
+    "body": "Não. O download dos materiais do NLW é totalmente proibido, sujeito a ações judiciais. Porém, você pode - e deve - aproveitar esses conteúdos dentro da semana do evento, onde os mesmos ficam acessíveis até o domingo, às 23h59 💜     ",
+    "category": "Eventos"
+  },
+  {
+    "title": "O Discover receberá novos conteúdos?",
+    "body": "Sim, o Discover está em constante evolução. Estamos sempre produzindo novos conteúdos para você evoluir ainda mais seus conhecimentos na programação. Não apenas com novas aulas, mas também com eventos, desafios e recursos para te ajudar a evoluir ainda mais rápido na direção dos seus objetivos.  Nós te avisaremos através do e-mail cadastrado na plataforma e da comunidade sempre que surgirem novidades no Discover. 🚀  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como acessar nossa comunidade no Discord?",
+    "body": "Para acessar nossa comunidade no Discord é necessário conectar seu perfil do Discord na plataforma da Rocketseat. É rápido e simples!  Ao realizar o acesso na plataforma, o botão Comunidade estará no topo da página.    Ao acessar a página, clique sobre o botão Comunidade. Ele irá redirecionar sua conta para a página de integração com nossa Comunidade. Nessa página, você deve clicar em Autorizar e já conseguirá acessar o ambiente do servidor.  Caso você não esteja logado na sua conta, você será redirecionado para a página do Discord para integrar sua conta. Aqui basta preencher o formulário com o seu usuário e senha, e então clique em Login.  Caso você ainda não tenha uma conta no Discord, pode criar uma clicando aqui. Depois volte para esta etapa normalmente.    Com o login efetuado, o Discord deve abrir uma nova janela solicitando que você autorize a aplicação. Basta clicar em Authorize.    Prontinho, agora você já tem acesso à nossa comunidade 🎉  Caso não apareça pressione CTRL + R (Windows/Linux) ou CMD + R (macOS) em seu Discord.  Atenção: se mesmo assim o canal exclusivo de alunos não aparecer, repita o procedimento em uma guia anônima do seu navegador.     ",
+    "category": "Comunidade"
+  },
+  {
+    "title": "O que é o NLW?",
+    "body": "O NLW é um evento para evoluir seu código e sua carreira. Durante os dias do evento acontecem workshops práticos com foco em uma tecnologia específica em cada trilha. Todo o evento é totalmente online e gratuito, com conteúdo novo a cada edição.  Essa é uma semana intensa, com hacks de carreira, muito código, desafios, networking e um único objetivo: te levar para o próximo nível. Você vai conhecer na prática uma metodologia eficiente para o seu aprendizado, que já impulsionou milhares de devs. Esse é o mesmo método dos nossos treinamentos pagos.  Para diferentes objetivos, diferentes trilhas, e em todas as trilhas um projeto completo no final. O NLW foi totalmente desenhado para te ajudar a dar o próximo passo na sua evolução como programadora ou programador, indo direto ao ponto e de acordo com seus objetivos. 🚀  ",
+    "category": "Eventos"
+  },
+  {
+    "title": "Como eu acesso os conteúdos da Rocketseat?",
+    "body": "Para acessar os conteúdos em nossa plataforma, você precisa ter uma conta ativa. Para criar uma conta é bem simples! Siga os passos:  1° Acesse http://app.rocketseat.com.br e clique em \"Registre-se\" para criar uma nova conta.    DICA: Você também pode fazer login com sua conta GitHub. Nesse caso, o email de acesso será o mesmo usado no GitHub.  2º Preencha seus dados e clique em CADASTRAR.    Em instantes, você receberá um e-mail com a mensagem para confirmar seu endereço de e-mail cadastrado. O endereço de e-mail é sua chave de acesso, ele é pessoal e único.    3° Confirme a verificação do seu e-mail clicando no link indicado.  Após o redirecionamento para a área de login da plataforma, faça o login novamente e pronto! Você já poderá acessar os conteúdos da Rocketseat!  Importante: Todos os produtos da Rocketseat estão vinculados ao seu e-mail cadastrado. Por isso, caso você tenha uma compra feita em outro endereço de e-mail que não o utilizado para acessar a plataforma, entre em contato com nosso time de suporte solicitando a transferência do acesso.     ",
+    "category": "Plataforma"
+  },
+  {
+    "title": "Posso fazer a inscrição no Ignite a qualquer momento?",
+    "body": "Sim! Atualmente o Ignite está disponível para ser adquirido sem a necessidade de aguardar um período de inscrição, e você pode começar quando quiser!  As assinaturas são anuais, ou seja, tem validade de 12 meses. Dessa forma, garantimos um conteúdo sempre atualizado para você! Para assinar, basta o link abaixo:  https://www.rocketseat.com.br/ignite     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como posso sugerir um conteúdo?",
+    "body": "Nós queremos entregar o melhor conteúdo para a nossa comunidade. E para isso estamos sempre ligados nas novidades e, claro, nas sugestões e pedidos que vocês nos enviam nas redes sociais. 💜  Para sugerir um conteúdo você pode enviar um e-mail para oi@rocketseat.com.br com o assunto [Sugestão + tópico sugerido]. Assim sua sugestão será encaminhada para o banco de conteúdos, revisado constantemente pelo nosso time para atualizações.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Qual é a diferença entre o Explorer e o Discover?",
+    "body": "Olha só a diferença entre os dois, dev:  O Discover é um programa rápido, prático e gratuito para você descobrir se programação é para você. Nesse programa, as aulas são gravadas e você seguirá uma jornada clara, com práticas e exercícios.  Saiba mais em https://www.rocketseat.com.br/discover.  Já o Explorer é o programa que vai te ensinar a se posicionar como um profissional de programação e acessar a sua primeira oportunidade no mercado. O Explorer foi criado com um método inteligente e eficiente para te ajudar a evoluir habilidades técnicas e comportamentais específicas que farão de você um profissional pronto para lidar com desafios do mundo real, utilizando o método 7-2-1.  Você vai dominar coding, networking e branding. As aulas são gravadas e ao vivo (e também disponibilizadas depois), além de encontros ao longo do programa. O acesso ao Explorer é válido por 12 meses.  Saiba mais em: https://www.rocketseat.com.br/explorer",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "O NLW terá mais trilhas futuramente?",
+    "body": "Todas as edições do NLW possuem formatos e trazem conteúdos diferentes. Atualmente, é possível acessar conteúdos voltados para quem está iniciando na programação e para quem já tem experiência e está buscando se especializar - e cada vez mais, o intuito é trazer ainda mais conteúdo incrível. Acompanhe as próximas edições para ficar por dentro das novidades.",
+    "category": "Eventos"
+  },
+  {
+    "title": "O Ignite oferece certificado?",
+    "body": "Sim! Cada trilha oferece um certificado específico, indicando que você concluiu o programa e a quantidade de horas investidas para atingir isto.  O certificado fica disponível na própria plataforma, após você assistir todos os conteúdos e enviar todos os desafios obrigatórios da trilha.  📢 Se liga, dev: Você teve ter média 6 ou superior nos desafios para emitir seu certificado.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Preciso ter conhecimentos prévios para participar do NLW?",
+    "body": "O NLW possui duas trilhas de aprendizado: uma para quem está iniciando na programação e uma para quem já tem experiência e quer aprimorar seus conhecimentos. Dessa forma, você pode escolher qual das trilhas faz mais sentido para você 😊     ",
+    "category": "Eventos"
+  },
+  {
+    "title": "O que é o Explorer?",
+    "body": "O Explorer é o programa que vai te ensinar a se posicionar como um profissional de programação e acessar a sua primeira oportunidade no mercado.  O Explorer foi criado com um método inteligente e eficiente para te ajudar a evoluir habilidades técnicas e comportamentais específicas que farão de você um profissional pronto para lidar com desafios do mundo real.   MAS COMO ELE FUNCIONA?  📌 Nós trabalharemos juntos. Desde os fundamentos até as principais ferramentas que você precisa para acessar a sua primeira oportunidade utilizando o método 7-2-1.  Ou seja, você vai dominar coding, networking e branding. Isso significa que você vai se preparar e se sentir seguro(a) para assumir desafios do mundo real. Desenvolver cada um desses aspectos te fará um dev muito mais qualificado para o mercado de trabalho, e isso vai aumentar tuas chances de ser sempre a primeira opção dos recrutadores.   AS AULAS SÃO GRAVADAS?  📌 As aulas do Explorer são gravadas e ao vivo.  Quando ao vivo, provavelmente acontecerão durante o período da noite, às 19h. Os horários serão previamente definidos e anunciados. Ainda assim, se você não puder participar, disponibilizamos as gravações em outro momento.  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "O que é a Rocketseat?",
+    "body": "Em um mundo onde a informação fica obsoleta cada vez mais rápido, velocidade de aprendizado é a chave para o sucesso. O universo da programação é infinito e a tecnologia não para de evoluir. Com ferramentas surgindo todos os dias o excesso de informação tiram seu foco e atrasam a sua evolução.  A Rocketseat surgiu para ser um filtro para todas essas informações e te guiar indo direto ao ponto no que importa. Somando tecnologias alinhadas com o mercado a uma jornada completa de aprendizado.  Sabemos que a jornada dev é infinita e por isso nós criamos um ecossistema de educação para te ajudar em todas as etapas. Assim, você irá avançar junto com a tecnologia, seu código e carreira de forma contínua.  Aqui você terá acesso a uma plataforma de educação em tecnologia onde para encontrar tudo o que precisa para progredir na programação e alcançar seus objetivos no menor tempo possível.  Desenvolvemos uma metodologia de aprendizado orientada à prática, programas de educação de acordo com seu momento na jornada e uma comunidade incrível com milhares de devs colaborando entre si.  Começando pelo Discover com uma jornada prática e mão-na-massa que te ajuda a entender se programação é o caminho certo para você, seguindo para o Explorer, um programa completo para quem quer evoluir do zero à primeira vaga como desenvolvedor ou desenvolvedora, temos também o programa de aceleração Ignite para quem já domina os fundamentos da programação avançar na carreira e, por fim, o Rocketseat Plus, para você manter o aprendizado contínuo.  A nossa plataforma une toda a jornada para você encontrar tudo que precisa em um único lugar. Portanto as empresas também fazem parte do ecossistema e se conectam aos devs através da plataforma. Preparar ótimos devs e uni-los a ótimas empresas: essa é a nossa busca diária.  O aprendizado é contínuo e queremos evoluir com você em direção ao próximo nível 🚀",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Quem tem acesso a trilha Higher?",
+    "body": "Todos os alunos e alunas que possuem acesso ao Rocketseat ONE ou ao Ignite possuem acesso aos conteúdos da trilha Higher.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Por quanto tempo eu terei acesso ao Ignite?",
+    "body": "O Ignite possui um modelo de assinatura anual, de forma que seu período de acesso é vinculado ao mesmo nesse formato.  Desse modo você pode assinar e ter acesso a todos os conteúdos no momento que mais fizer sentido na sua jornada profissional, mantendo-se sempre atualizado(a) com o mercado, acompanhando as adições e atualizações de conteúdos de cada trilha.  E como os planos atualmente são anuais, o seu acesso também é por 1 ano.   ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Comportamento - Discord",
+    "body": "Respeito acima de tudo.  Qualquer forma de desrespeito, em relação a qualquer aspecto não será tolerada! Essa é uma comunidade para todos, onde todos são bem-vindos e devem ser respeitados.  Para nos mantermos fortes, unidos e organizados, é preciso que algumas regras e recomendações de comportamento sejam definidas (além do bom senso):  ➡️  Não utilize @everyone ou @here. Apenas envie sua mensagem. Se for um comunicado de grande importância, peça para que um dos membros da moderação envie para você.  ➡️  Não mencione roles (grupos de usuários) ou membros de forma aleatória para obter uma resposta. Respeite o tempo de cada um e você terá sua resposta.  ➡️  Lembre-se que a cada mensagem os membros são notificados. Por conta disso, se esforce para enviar tudo o que deseja em uma única mensagem ao invés de dar 'enters' a cada palavra.  ➡️  Tome cuidado com flood, ninguém gosta de spam.  ➡️  Explore as reactions. Assim você evita mensagens desnecessárias.  ➡️  Deixe suas mensagens mais claras, objetivas e bem formatadas entendendo as regras de formatação do discord.  ➡️  Seja direto ao responder uma dúvida.  ➡️  Seja ainda mais direto ao enviar uma dúvida. Deixe claro qual o seu problema e envie todas as informações necessárias para o entendimento da mesma.  ➡️  Todos estão aqui para compartilhar conhecimento. Dessa forma, não existem motivos para você responder uma dúvida por direct.  ➡️  Seja gentil e empático sempre. Se uma pergunta é feita, essa deve ser respondida com respeito. Caso contrário, sua resposta não é bem-vinda. Lembre-se que o que parece ter resposta óbvia para você hoje, já foi uma dúvida no passado.  ➡️  Não pergunte se pode perguntar. É comum entre os novos membros perguntas como 'posso fazer uma pergunta sobre [...]' ou alguém entende de [...]'. A comunidade está aqui pra isso, seja direto ao ponto e não se acanhe. Sua pergunta certamente será respondida com muito respeito (lembre-se de utilizar o canal correto).  ➡️  Não é permitido o convite para outras comunidades por aqui, assim como não é permitida a criação de outros servidores com o nome da Rocketseat, já tivemos problemas com isso no passado e essas medidas são para proteger nossos membros.  ➡️  Não é permitido a divulgação de links de afiliados.  ➡️  É estritamente proibido compartilhar qualquer conteúdo, link ou arquivo pirateado.",
+    "category": "Comunidade"
+  },
+  {
+    "title": "O que vou aprender durante o NLW?",
+    "body": "O NLW é dividido em trilhas, e elas podem variar de acordo com a edição do evento. Considerando a edição mais recente do NLW, você poderia aprender: ReactJS, , React Native, NodeJS, Desenvolvimento de IA e Java!  Portanto, o que você vai aprender no NLW será conforme a trilha que você escolher. Em todas as trilhas você vai aprender desenvolvendo uma aplicação completa durante a semana. Na página de inscrição de cada edição você encontrará todas as informações sobre as trilhas e suas características 🚀",
+    "category": "Eventos"
+  },
+  {
+    "title": "Como acessar o fórum do Ignite?",
+    "body": "O fórum de cada trilha do Ignite fica acessível através do menu rápido, depois de ter acessado a página de conteúdo daquela trilha.    ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como pagar por PIX ou Boleto?",
+    "body": "Se você deseja pagar por PIX, boleto à vista ou outro meio de pagamento, entre em contato com a gente pelo WhatsApp da Rocketseat. Por lá, nosso time de consultores estará à disposição para te auxiliar.  É só acessar o link a seguir: https://rseat.in/rocketseat-vendas",
+    "category": "Pagamento e Renovação"
+  },
+  {
+    "title": "Posso colocar o projeto do NLW no meu portfólio/GitHub?",
+    "body": "Sim, você pode e nós recomendamos que você faça isso. Um dos propósitos do evento é justamente te ajudar a desenvolver seu primeiro projeto com a tecnologia que você escolheu para o seu portfólio/Github.  Aproveite o projeto do NLW para se destacar mostrando o que anda estudando e o seu processo de evolução 🚀   ",
+    "category": "Eventos"
+  },
+  {
+    "title": "Por onde acompanhar a Rocketseat?",
+    "body": "Para conhecer um pouco mais sobre a Rocketseat e acompanhar todas as novidades, acompanhe-nos em nossas redes sociais! Por lá, você ficará por dentro de todas as novidades e lançamentos mais atualizados.  Acesse aqui:   * Facebook  * Youtube  * Twitter  * Instagram  * Linkedin     ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Como preencho meu Perfil na Plataforma?",
+    "body": "A Plataforma é seu cartão de apresentação para o mundo com a Rocketseat! Por isso, é super importante que você preencha com todas as informações importantes 🚀  📌 No canto direito está o menu principal. Clicando em Meu perfil você será redirecionado para a sua página.    📌 No cartão de apresentação clique no ícone de editar para adicionar suas informações pessoais, profissionais, personalizar sua URL e selecionar suas tecnologias de destaque.    📌 Em Sobre mim você pode fazer uma breve apresentação e vincular seu perfil do LinkedIn e GitHub, aumentando sua rede de conexões.  Em Tecnologias você deve selecionar seus conhecimentos de acordo com a relevância, que categorizamos como: Tenho experiência, Estou estudando e Tenho interesse.    📌 Temos também esse vídeo realizando o passo a passo 🚀       ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Onde acontece o NLW?",
+    "body": "O NLW acontece na plataforma exclusiva do evento. Nós enviamos para seu e-mail de inscrição o acesso para a plataforma de aulas nas vésperas do evento.  A liberação das aulas acontece de acordo com o cronograma de cada edição. Sempre que uma nova aula estiver disponível você receberá uma notificação por e-mail e através da comunidade no Discord 🚀",
+    "category": "Eventos"
+  },
+  {
+    "title": "Como alterar meu e-mail de cadastro?",
+    "body": "No menu principal, clique em Meus dados. Vá até a seção Meu acesso e em E-mail de cadastro selecione a opção Alterar.      Adicione seu novo e-mail de cadastro, nos conte o motivo da alteração e clique em Confirmar.  Nosso time vai avaliar seu pedido de alteração para o novo e-mail, podendo aceitar ou recusar dependendo da situação. Mas fique tranquilo, é apenas um procedimento padrão. 💜    ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "O que foi o GoStack?",
+    "body": "O GoStack foi um treinamento online, prático e intensivo, no formato de Bootcamp.  Nele, os alunos e alunas iam fundo nas tecnologias ReactJS, NodeJS e React Native e todo o ecossistema dessas tecnologias, do zero ao deploy, incluindo testes automatizados, integração contínua, publicação nas stores e todas as biliotecas e frameworks importantes para quem desejava ficar pronto para os desafios do mundo real e se destacar no mercado de trabalho.  O mesmo foi descontinuado no início de 2021. Você pode aproveitar, atualmente, para adquirir os conteúdos do Ignite, nosso programa de especialização em tecnologia.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Preciso ter conhecimentos prévios para participar do Discover?",
+    "body": "Não é necessário! O Discover é justamente para quem quer iniciar na programação. Ele é um curso totalmente gratuito de introdução a programação onde você irá dar seus primeiros passos no universo da tecnologia, conhecer a profissão, os fundamentos e ter contato com as principais linguagens de programação.  Você vai aprender de forma prática, leve e descomplicada a criar seu primeiro site para construir um portfólio e sair com um certificado validado.  Já aproveita e realiza sua inscrição em https://www.rocketseat.com.br/discover.  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Qual é a diferença entre o Explorer e o Ignite?",
+    "body": "O Explorer é o programa de formação da Rocketseat, que te leva do zero até a sua primeira vaga em programação. Nele você vai aprender desde os fundamentos da programação (a linguagem mais utilizada na programação web - Javascript com React.js e Node.js e também HTML, CSS, git e Bancos de dados SQL) como também as habilidades técnicas e comportamentais específicas que farão de você um profissional pronto para lidar com desafios do mundo real.  O Explorer é feito para você que está começando do zero sem faculdade, está em transição de carreira, já é dev iniciante e quer reforçar os fundamentos ou quer se tornar um dev completo atuando com front-end e back-end!    O Ignite é um programa de aceleração para devs, focado em preparar profissionais completos(as) para o mercado, treinando skills técnicas e comportamentais de forma intensiva e prática. O Ignite é dividido em trilhas de conhecimento não-dependentes onde nos aprofundamos em uma tecnologia específica.  Atualmente, o Ignite possui trilhas de ReactJS, NodeJS, React Native, Desenvolvimento de IA e Java. Em resumo, o objetivo do Ignite é desenvolver habilidades que vão acelerar sua carreira através de uma metodologia de aprendizado eficiente, um currículo alinhado às necessidades do mercado e as atitudes que vão te ajudar a se destacar como profissional.     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "O que é o Ignite?",
+    "body": "O Ignite é um programa de aceleração para devs, focado em preparar profissionais completos(as) para o mercado, treinando skills técnicas e comportamentais de forma intensiva e prática.  Ele é dividido em trilhas de conhecimento não-dependentes onde nos aprofundamos em uma tecnologia específica - sendo essas trilhas em NodeJS, ReactJS, React Native, Desenvolvimento de IA e Java.  Em resumo, o objetivo do Ignite é desenvolver habilidades que vão acelerar sua carreira através de uma metodologia de aprendizado eficiente, um currículo alinhado às necessidades do mercado e as atitudes que vão te ajudar a se destacar como profissional.  Você pode ver mais informações e adquirir o Ignite em https://lp.rocketseat.com.br/ignite.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como alterar meu endereço?",
+    "body": "No menu principal, clique em Meus dados. Na seção Endereço você pode selecionar a opção Moro no Brasil ou Moro no Exterior. As informações devem ser adicionadas de acordo com sua localização atual.  Caso você selecione a opção Moro no Exterior, não se esqueça de informar os dados em português, conforme indicado.    Endereço Nacional:    Endereço Internacional:    Se tiver ficado qualquer dúvida sobre o processo, confira o vídeo abaixo que fazemos o passo a passo 🚀       ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "O que é o Discover?",
+    "body": "O Discover é um programa rápido, prático e gratuito para você entrar no universo de tecnologia e descobrir se programação é para você. Aqui, você vai entender os principais conceitos da área através de uma metodologia mão na massa, com apoio da comunidade e dos nossos instrutores.  As aulas foram desenhadas em um sistema de jornada de descoberta. Aqui, você terá um caminho claro e seguro para começar e, ao final, responder à primeira pergunta importante: programação é para mim?     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Quanto custa o NLW?",
+    "body": "O NLW é totalmente gratuito, do início ao fim, sem enganação.  Para participar do NLW você só precisa se inscrever e escolher sua trilha, ficar de olho nas comunicações por e-mail e anotar os dias do evento na agenda para não perder a edição.  Quer saber quando acontecem as próximas edições? Siga @rocketseat_oficial no Instagram que avisamos por lá sempre que uma nova edição for acontecer e as inscrições estiverem abertas. 🚀",
+    "category": "Eventos"
+  },
+  {
+    "title": "Qual é a diferença entre Discover, Explorer, Ignite e Plus?",
+    "body": "Atualmente, a Rocketseat tem 4 núcleos de conteúdo para você desenvolver sua carreira:  Discover  O Discover é um programa rápido, prático e gratuito para você entrar no universo de tecnologia e descobrir se programação é para você.  Nesse produto, as aulas são gravadas e você seguirá uma jornada clara, com práticas e exercícios.  Você pode pesquisar todo o conteúdo detalhado aqui: https://rseat.in/discover-trilhas  Explorer  O Explorer é um programa de 6 meses que vai te ensinar a se posicionar como um profissional de programação e acessar a sua primeira oportunidade no mercado. Você vai dominar coding, networking e branding do zero.  As aulas são gravadas e ao vivo (e também disponibilizadas depois), além de encontros ao longo do programa.  Você pode verificar os conteúdos dos módulos do Explorer em https://rseat.in/explorer-modulos.  Ignite  O Ignite é o programa de especialização nas tecnologias mais procuradas pelo mercado. O Ignite é dividido em trilhas de conhecimento não-dependentes onde nos aprofundamos em uma tecnologia específica.  Em resumo, o objetivo do Ignite é desenvolver habilidades que vão acelerar sua carreira através de uma metodologia de aprendizado eficiente, um currículo alinhado às necessidades do mercado e as atitudes que vão te ajudar a se destacar como profissional.  Você pode consultar todo o conteúdo do Ignite de forma detalhada neste link: https://rseat.in/ignite-trilhas  Plus  O Experts Club chegou em seu próximo nível e agora é chamado de Rocketseat Plus, mas com muito mais benefícios. O Plus é um ambiente exclusivo de aprendizagem num nível avançado e com alta conexão com o mercado para acessar melhores oportunidades disponíveis. No Plus terão aulas práticas com experts de grandes empresas, acesso a edições passadas do NLW, Maratonas, diferenciação no perfil, brindes físicos e benefícios para assinantes, encontros ao vivo com convidados especiais, canais exclusivos e networking com a comunidade no Discord.  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como se conectar e aceitar outros devs na plataforma?",
+    "body": "Aumente sua rede e conecte-se com outros devs na Plataforma. 🚀  É possível visualizar os pedidos de conexão clicando no ícone de Convites pendentes. Você terá a opção de aceitar ou recusar. Clicando em ver todos você tem acesso à lista completa de convites pendentes.    Para solicitar uma conexão com outro dev você deve clicar no botão + Conectar, que estará visível no cartão de apresentação.    ",
+    "category": "Plataforma"
+  },
+  {
+    "title": "Posso fazer mais de uma trilha do NLW?",
+    "body": "Recomendamos que você escolha uma trilha e se dedique totalmente a ela durante o evento. A separação das trilhas foi criada para te impulsionar mais longe em menos tempo, focando no que realmente importa.  O Foco é o primeiro pilar da nossa metodologia de aceleração do aprendizado, seguido por Prática e Grupo. Programação é um universo infinito, por isso você precisa saber onde quer chegar e não se distrair com várias ferramentas. Essa é a melhor forma de acelerar sua evolução e atingir seus objetivos.  No NLW você tem a chance de conhecer o poder dos três pilares combinados. Ao escolher mais de uma trilha você quebra a dinâmica da metodologia e corre o risco de se prejudicar.  Não adianta apenas conhecer as tecnologias, você precisa dominá-las, e o NLW é um evento intenso, com muita prática para você desenvolver esse ponto.  Por isso, para conseguir acompanhar as aulas e absorver o conteúdo de forma satisfatória você precisa focar em uma única trilha. Caso contrário, você corre o risco de não conseguir levar o projeto adiante em nenhuma das trilhas, e pode acabar perdendo a oportunidade de desenvolver suas habilidades.  Portanto, o que vai te ajudar a ser eficiente nos estudos e se posicionar bem como profissional é ter foco. 💜  ",
+    "category": "Eventos"
+  },
+  {
+    "title": "Como excluir minha conta?",
+    "body": "No menu principal, clique em Meus dados. Vá até a seção Meu acesso e selecione a opção Excluir minha conta.      Tenha certeza de que você deseja excluir sua conta. Confirmada a ação, todos seus dados serão excluídos e não será possível a restauração.  Caso não queira excluir, pode simplesmente deixar de usar, assim sua conta estará disponível quando você quiser voltar. 💜  A exclusão da conta não cancela o recebimento de e-mails por parte da Rocketseat. Entre em contato com oi@rocketseat.com.br caso queira cancelar a assinatura de e-mails.     Se tiver ficado qualquer dúvida, confira o vídeo abaixo que fazemos o passo a passo por lá 🚀       ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Denúncias e sugestões da comunidade",
+    "body": "Se você se sentiu desrespeitado ou percebeu que algum membro está descumprindo as regras de comportamento, você pode entrar em contato diretamente com os moderadores no privado ou enviar um e-mail com o assunto [Denúncia Discord] para oi@rocketseat.com.br.  Sugestões também são muito bem-vindas, nesse caso use o assunto [Sugestão Discord]. ",
+    "category": "Comunidade"
+  },
+  {
+    "title": "Por onde posso acessar o NLW após o período do evento?",
+    "body": "Ao fim do evento todos os conteúdos são retirados do ar e ficam disponíveis apenas dentro da plataforma, no Rocketseat Plus.  Vale lembrar que o download do conteúdo é proibido. Portanto, se ligue nas datas em que acontece a edição que você quer participar e anote na agenda para não perder nada.   ",
+    "category": "Eventos"
+  },
+  {
+    "title": "Onde posso tirar minhas dúvidas com o conteúdo do NLW?",
+    "body": "Todas as dúvidas devem ser enviadas na comunidade do NLW, no canal referente à aula em que a dúvida tiver surgido. Por exemplo: caso você tenha dúvidas relacionadas a primeira aula, as mesmas devem ser enviadas no canal #aula-1.       ",
+    "category": "Eventos"
+  },
+  {
+    "title": "Não moro no Brasil, o que eu faço?",
+    "body": "Caso você não resida no Brasil e/ou não tenha CPF, nos envie um e-mail no oi@rocketseat.com.br com o título: [Compra Internacional] Nome do Programa e as informações abaixo:  Nome:  E-mail:  Endereço:  NIRE (ou qualquer número de documento de identificação que se assemelhe ao CPF):  Programa escolhido:  Importante: apenas lembrando que compras do exterior não podem ser parceladas.",
+    "category": "Pagamento e Renovação"
+  },
+  {
+    "title": "O Discover oferece certificado?",
+    "body": "Sim! Ao completar o Discover você tem acesso ao certificado de participação 🚀  Este recurso está disponível na plataforma desde abril/2022. Se você terminou a jornada antes, basta emitir seu certificado agora.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Posso dividir o acesso com alguém?",
+    "body": "Não, o acesso é individual e intransferível. O acesso é único, portanto não é permitido compartilhar com outras pessoas.  Isso consta nos nossos termos de uso ⤵️  📌 4.6. Havendo suspeita de conhecimento da senha por terceiros, o CONTRATANTE deverá comunicar, imediatamente, a CONTRATADA para a substituição das informações de acesso. Vale ressaltar que o login e senha do CONTRATANTE são pessoais e intransferíveis, motivo pelo qual se forem usados por terceiros, a CONTRATADA se reserva o direito de cancelar seu acesso.  4.7. A CONTRATADA através de seus meios de monitoramento e sistemas de segurança e controle, poderá identificar acessos simultâneos do Aluno, ensejando a suspensão da transmissão do Curso.",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "Como a Rocketseat pode te ajudar?",
+    "body": "O propósito da Rocketseat é ser um atalho entre você e seus objetivos como programador. Seja para avançar na carreira, dominar as tecnologias mais modernas de desenvolvimento web e mobile, ou acompanhar a tecnologia. Nós estamos aqui por você.    Para você ir mais rápido na direção dos seus objetivos, diferentes programas. O Rocketseat One é um formato de assinatura onde você garante todos os programas de educação da Rocketseat em um único lugar, com um único acesso. Isso quer dizer que você vai ter acesso ao Explorer, Ignite e Rocketseat Plus (sim, todos esses) simultaneamente em apenas uma assinatura anual (e pagando muito menos) para uma jornada de aprendizado contínuo e muita evolução em programação.  Conheça a jornada completa do Rocketseat ONE:   SAIA DO ZERO E TORNE-SE DEV FULL STACK NO EXPLORER  Domine os fundamentos da programação web, HTML, CSS, Git, banco de dados, back-end e front-end e torne-se um(a) dev full stack. Aprenda as principais habilidades comportamentais necessárias para conquistar sua primeira vaga e conte com um tutor para sua jornada.   DOMINE A TECNOLOGIA MAIS DEMANDADA DO MERCADO NO IGNITE  Construa interfaces modernas e reativas na web com React utilizando uma biblioteca modular e escalável, aprenda as principais ferramentas e desenvolva diversos projetos com o conteúdo mais atualizado do mercado.   TORNE-SE UM DEV MOBILE COM REACT NATIVE NO IGNITE  Crie aplicações mobile nativas e interfaces modernas incríveis de maneira declarativa muito semelhante ao desenvolvimento web para Android e iOS utilizando a mesma base de código.   APRENDA A CONSTRUIR ARQUITETURAS ESCALÁVEIS COM NODE.JS NO IGNITE  Construa arquiteturas simples, escaláveis e testáveis para a web utilizando uma linguagem flexível e popular.  Além de tudo isso, você ainda tem acesso a aulas gravadas pra assistir a hora que quiser, metodologia prática e cases reais, acompanhamento e suporte especializado, atualizações e novos conteúdos todos os meses e ainda garante diversos certificados e mais de 76 projetos práticos!  Os conteúdos vão compartilhar com você de forma prática e objetiva as soluções para os problemas que estão resolvendo no dia a dia. Tudo isso para te ajudar a se manter relevante e evoluindo junto com a tecnologia.  Toda a jornada é conectada através da plataforma e da comunidade. Já são +150k estudantes na comunidade aberta trocando conhecimento e criando conexões valiosas. Seja qual for seu momento na jornada, nós e milhares de devs que estão evoluindo com a gente, estaremos aqui para te ajudar.  Também temos uma série de conteúdos gratuitos feitos com muito carinho e foco na sua evolução. Aprenda através do Blog, Instagram, canal no Youtube da Rocketseat e canais dos educadores, Twitter e Facebook 🚀",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "O que é Pioneer? E como sei se sou um deles?",
+    "body": "O programa Pioneer foi feito para reconhecer os primeiros alunos e alunas da Rocketseat, incluindo integrantes do LaunchBase e GoStack, além de alunos que adquiriram o Ignite até julho de 2021.  Todos os alunos e alunas elegíveis para Pioneer recebeu um aviso ao entrar na plataforma, solicitando o aceite dos termos do programa.  Pioneers possuem benefícios exclusivos, além de acesso vitalício às trilhas que adquiriram.     ",
+    "category": "Dúvidas gerais"
+  },
+  {
+    "title": "O que é a trilha Higher?",
+    "body": "A trilha Higher é um conteúdo voltado para as soft skills que está disponível no Ignite! Nela você verá diversos temas não-técnicos para se aperfeiçoar como profissional.  Devs não são formados(as) somente por conteúdos técnicos, por isso oferecemos esta trilha que protagoniza a importância de desenvolver habilidades como \"Aprender a Aprender\", \"Aprender a Comunicar\", \"Aprender a Entregar\" e \"Aprender a Criar\", mostrando o quão importante são essas skills para o seu dia a dia e sua carreira.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como faço para emitir a nota fiscal da minha assinatura?",
+    "body": "A nota fiscal é emitida automaticamente e enviada no e-mail cadastrado na plataforma em até 10 dias após a data da compra.  📢 Se liga, dev: é importante preencher os campos CPF e Endereço na área Meus Dados para a emissão de sua nota fiscal.  Caso você não tenha recebido dentro do período estipulado, dê uma olhada na sua caixa de spam!",
+    "category": "Pagamento e Renovação"
+  },
+  {
+    "title": "Quanto custa o Discover?",
+    "body": "O Discover é totalmente gratuito para toda comunidade, do início ao fim. Esse é o tamanho do nosso compromisso em proporcionar uma oportunidade para todas as pessoas que queiram dar os primeiros passos nessa área 💜  Caso você não saiba como acessar o Discover, basta acessar essa página: https://www.rocketseat.com.br/discover",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "O que eu preciso saber para fazer o Explorer?",
+    "body": "Não é necessário ter nenhum conhecimento prévio!  O Explorer é feito para quem está iniciando agora, do total zero. E você conta com todo o suporte do time da Rocketseat durante esse processo.  Caso tenha alguma dúvida sobre os conteúdos, é só visualizar a ementa do Explorer por aqui: https://rseat.in/explorer-modulos",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como acessar a nova sala de aula?",
+    "body": "A sala de aula está de cara nova e vamos conferir como aproveitar seu acesso da melhor forma 😊    Ao acessar o módulo em uma formação, você terá acesso aos conteúdos na sala de aula. No menu lateral, você conseguirá visualizar todos os conteúdos de aulas e atividades de estudos, seguido de um espaço de consulta para materiais complementares disponibilizados pelos educadores! E tem mais: você poderá visualizar os principais tópicos de dúvidas do fórum relacionados à aula.  Fora isso, ainda será possível acessar seus conteúdos em modo teatro ou tela cheia, realizar a avaliação da aula assistida e tirar dúvidas com Houston, a IA da Rocketseat.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Navegando pelo Catálogo de conteúdos",
+    "body": "A forma de acessar seus conteúdos mudou! Agora, você consegue ter uma visualização completa diretamente pelo catálogo de conteúdos e acessar tudo que precisa para seu aprendizado contínuo em programação. Vem comigo explorar as novidades 🤩    As trilhas mudaram de nome e agora são formações! Você continua com acesso a todos os conteúdos, mas agora pode visualizar a partir de cada tecnologia.    Em cursos, também será possível visualizar todos os cursos exclusivos que você já tem acesso para alavancar ainda mais seus conhecimentos.    Na sessão de Conteúdos complementares, você encontra aulas e conteúdos extras pra complementar seu aprendizado - igualzinho ao formato do Plus.  Também será possível acessar uma sessão dedicada a todos os nossos Eventos passados. Por lá, você terá acesso ao DoWhile, todas as edições de NLWs, Maratonas, Labs, Nitros e muito mais!     E para facilitar sua busca, você terá duas formas de filtrar seus conteúdos: pelo filtro do catálogo, dividido em tipo de conteúdo, nível de habilidade e competência ou pelo filtro por tecnologia, escolhendo conteúdos focados em ReactJS, Java, C#, Lavarel, entre outros.     ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Acessando minha página de formação",
+    "body": "A página de sua formação está de cara nova! E por aqui, vou te ensinar como ela está intuitiva e super fácil de acessar. Vem comigo 😊    Ao acessar sua formação pelo catálogo, você terá acesso a uma página recheada de informações sobre a formação que você irá acessar! Começando pelo vídeo de boas-vindas do educador, que é seguido pelos níveis de conteúdos. Em cada nível você poderá acessar módulos, onde você tem acesso ao agrupamento de aulas e atividades principais do conteúdo; desafios práticos, para praticar enquanto programa com desafios de projetos exclusivos; e testes teóricos, para validar seu conhecimento adquirido através de um quiz.    Na lateral direita, você terá acesso ao seu progresso detalhado de estudos da formação, além de acesso ao Fórum, espaço para dúvidas técnicas com alunos, alunas e instrutores sobre a tecnologia.",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "O nome dos programas mudaram?",
+    "body": "Sim! O nome dos programas em nossa plataforma mudaram. Anteriormente, você precisaria acessar os conteúdos de forma isolada, como Explorer, Ignite e Rocketseat Plus, além de outro espaço para os cursos bônus exclusivos.    Agora, você consegue acessar todos os programas no catálogo de conteúdos da plataforma. Por lá, é possível acessar as formações, os cursos, os eventos e os conteúdos complementares em um só lugar!  ",
+    "category": "Conteúdos"
+  },
+  {
+    "title": "Como realizar navegação e busca na plataforma?",
+    "body": "Com as recentes mudanças na plataforma, é sempre bom ficar em dia com o modo de busca e navegação, não acha? Vamos explorar isso juntos 🤩    Acessando a plataforma, no menu lateral, você encontra as principais páginas. Lembrando que também é possível minimizar o menu para ganhar mais espaço.    Na página de Catálogo, você tem acesso a todas as formações, cursos e muito mais conteúdo em vídeo da Rocketseat para seu aprendizado contínuo.  Em Eventos, você fica por dentro de todos os eventos exclusivos da Rocketseat feitos para a comunidade.  Em Fórum, você pode tirar suas dúvidas técnicas sobre as aulas com a comunidade e com os instrutores da Rocketseat.    Mais abaixo, em Comunidade, você tem acesso a maior comunidade dev da América Latina a partir do nosso canal do Discord - se ainda não acessou por lá, não perde tempo!  Na sessão de Ajuda, você consegue acessar esse espaço de central de ajuda e muitos outros: aprenda como a plataforma funciona ou fale com o nosso suporte - estamos disponíveis de segunda à sexta, de 09 às 17h, diretamente pelo chat da plataforma para te auxiliar.    E, por fim, você pode utilizar a barra de pesquisa para buscas detalhadas para encontrar assuntos, aulas e pessoas na plataforma de forma fácil.",
+    "category": "Plataforma"
+  },
+  {
+    "title": "Qual a diferença entre formações, cursos, conteúdos complementares e eventos no Catálogo?",
+    "body": "Que tal ficar por dentro de toda a nomenclatura da estrutura dos nossos conteúdos? Vem comigo!    Para começar, temos as Formações, que são conteúdos completos e aprofundados pra você se especializar e dominar tecnologias na prática, do básico ao avançado, e garantir seu certificado.    Também temos os Cursos, que são conteúdos práticos de curta duração com certificação em temas específicos.    Além deles, temos os Conteúdos complementares, que são aulas e conteúdos extras pra complementar seu aprendizado com temas diversos.    E, por fim, temos os Eventos, que reúne todos os eventos passados da Rocketseat, como as edições das NLWs, Ignite e Explorer Labs, Maratonas, DoWhiles e outros.",
+    "category": "Plataforma"
+  },
+  {
+    "title": "O que são os Boosts na plataforma?",
+    "body": "As streaks consistem em um compromisso com a rotina de estudos, por se tratar de uma sequência de dias estudados por você na plataforma. A cada dia que você estuda, você recebe um boost, que pode ser visualizada por:   * Estudar por dias seguidos, ou  * Atingir a sua metal semanal de estudos.  Caso você não atinja a meta estabelecida previamente, sua sequência de dias estudados se perde.  Quando falamos dos boosts, eles servem para você acompanhar como está sua rotina de estudos. Por isso, você ganha um boost a cada dia que estudar. Para ganhar boosts você deve:   * Assistir a pelo menos um minuto de aula  * Entregar um desafio ou responder a um quiz  No calendário, os dias em que estudou são representados pelo símbolo: 🔥",
+    "category": "Plataforma"
+  },
+  {
+    "title": "O que é o Café com Instrutores e como participar?",
+    "body": "O Café com Instrutores é um evento que acontece semanalmente, nas terças-feiras, na comunidade da Rocketseat! Ele foi criado com a comunidade e para a comunidade, iniciando como bate-papos abertos que aconteciam semanalmente e se consolidando como um espaço de temáticas além do código.   Nele, conversamos sobre Carreira e Empregabilidade, Estudos, Universo Dev, Motivação, Desenvolvimento Pessoal e muitos outros temas que impactam diretamente na sua jornada com a tecnologia.  Além disso, trazemos edições especiais que contam com convidados incríveis, como educadores e boosters da Rocketseat, integrantes do Space Squad e alunos e alunas convidados.   ",
+    "category": "Comunidade"
+  },
+  {
+    "title": "Como ter acesso a Carteirinha de Estudante?",
+    "body": "Sabia que todos os nossos alunos e alunas agora podem ter acesso a sua carteirinha de estudante e garantir ir desconto em ingressos para cinemas, teatros, espetáculos musicais, eventos educativos, jogos de futebol, entre muitos outros?  Isso mesmo! Para ter acesso a sua carteirinha de estudante, é super simples: basta nos chamar por um de nossos canais de atendimento - como o chat disponível dentro da plataforma - e iremos te passar todas as informações de contato 😊  Lembrando que para ter acesso a carteirinha de estudante, é necessário ter mais de 30 dias de acesso na plataforma e ter um status de aluno ou aluna ativo.",
+    "category": "Dúvidas gerais"
+  }
+]

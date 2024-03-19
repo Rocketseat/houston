@@ -72,6 +72,7 @@ export class QdrantVectorStore extends VectorStore {
 
   async addDocuments(documents: Document[]): Promise<void> {
     const texts = documents.map(({ pageContent }) => pageContent)
+
     await this.addVectors(
       await this.embeddings.embedDocuments(texts),
       documents,

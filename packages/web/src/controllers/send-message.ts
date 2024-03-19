@@ -5,7 +5,12 @@ import {
   createChainFromMemories,
   generateTitleFromChatMessages,
   Document,
+  HumanMessage,
+  AIMessage,
+  decideQuestionTypePrompt,
+  openAiChat,
 } from '@houston/langchain'
+
 import {
   sendMessageBody,
   SendMessageResponseHeaders,
@@ -18,6 +23,10 @@ import { textStream } from '../util/http-stream'
 import { redis } from '../lib/redis'
 import { HTTPException } from 'hono/http-exception'
 import { Snowflake } from '../util/snowflake'
+
+import { z } from 'zod'
+
+import { zodToJsonSchema } from 'zod-to-json-schema'
 
 interface ChatMessage {
   role: 'user' | 'assistant'
@@ -92,6 +101,10 @@ function createQDrantFilter(
     : null
 }
 
+const questionTypeSchema = z.object({
+  type: z.enum(['support', 'technical']).describe('The type of the question'),
+})
+
 sendMessageController.post(
   '/messages',
   zValidator('json', sendMessageBody),
@@ -116,6 +129,14 @@ sendMessageController.post(
     } else {
       conversationMemory = await getChatMemory(currentChatId)
     }
+
+    const conversationMemoryMapped = conversationMemory.map((memory) => {
+      if (memory.role === 'user') {
+        return new HumanMessage(memory.text)
+      } else {
+        return new AIMessage(memory.text)
+      }
+    })
 
     const userMessageId = snowflake.getUniqueID()
 
@@ -144,11 +165,47 @@ sendMessageController.post(
       should: filtersToApply,
     }
 
+    const questionTypeSchemaJSON = zodToJsonSchema(questionTypeSchema)
+
+    const functionCall = {
+      name: 'extract_question_type',
+      description: decideQuestionTypePrompt,
+      parameters: questionTypeSchemaJSON,
+    }
+
+    const decideQuestionTypeResult = await openAiChat.invoke(
+      [...conversationMemoryMapped, new HumanMessage(text)],
+      {
+        functions: [functionCall],
+        function_call: { name: 'extract_question_type' },
+      },
+    )
+
+    const questionTypeResultToJSON = decideQuestionTypeResult.toJSON()
+
+    if (!('kwargs' in questionTypeResultToJSON)) {
+      throw new HTTPException(500, {
+        message: 'Houston could not process the request',
+      })
+    }
+
+    const { type: questionType = 'technical' } = JSON.parse(
+      questionTypeResultToJSON.kwargs?.additional_kwargs?.function_call
+        ?.arguments,
+    )
+
+    const filterObject = filtersToApply ? { filter } : {}
+
+    const chainOptions = {
+      ...filterObject,
+      questionType,
+    }
+
     return textStream(
       async (stream) => {
         const houston = createChainFromMemories(
-          conversationMemory,
-          filtersToApply ? { filter } : {},
+          conversationMemoryMapped,
+          chainOptions,
         )
 
         const response = await houston.call({ question: text }, [
