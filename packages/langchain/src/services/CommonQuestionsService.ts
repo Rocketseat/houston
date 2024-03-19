@@ -29,11 +29,12 @@ export class CommonQuestionsService {
   async addQuestions(questions: Question[]) {
     const documents = questions.map((question) => {
       return new Document({
-        pageContent: question.answer,
+        pageContent: `${question.title} ${question.answer}`,
         metadata: {
           id: question.id,
           title: question.title,
           category: question.category,
+          answer: question.answer,
         },
       })
     })
