@@ -140,14 +140,6 @@ sendMessageController.post(
 
     const userMessageId = snowflake.getUniqueID()
 
-    await db.insert(messages).values({
-      id: userMessageId,
-      chatId: currentChatId,
-      role: 'user',
-      text,
-      originMetadata: chatContext,
-    })
-
     const responseMessageId = snowflake.getUniqueID()
 
     const filtersToApply = [
@@ -200,6 +192,15 @@ sendMessageController.post(
       ...filterObject,
       questionType,
     }
+
+    await db.insert(messages).values({
+      id: userMessageId,
+      chatId: currentChatId,
+      role: 'user',
+      text,
+      questionType,
+      originMetadata: chatContext,
+    })
 
     return textStream(
       async (stream) => {

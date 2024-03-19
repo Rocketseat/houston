@@ -48,6 +48,7 @@ export const messages = pgTable('messages', {
     }>()
     .notNull()
     .default({} as any),
+  questionType: text('question_type'),
   text: text('text').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
