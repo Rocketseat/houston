@@ -36,6 +36,13 @@
       "when": 1709640584412,
       "tag": "0004_glossy_warbound",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710874719238,
+      "tag": "0005_damp_frightful_four",
+      "breakpoints": true
     }
   ]
 }

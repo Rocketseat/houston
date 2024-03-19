@@ -1,0 +1,1 @@
+ALTER TABLE "messages" ADD COLUMN "question_type" text;

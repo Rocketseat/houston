@@ -12,6 +12,8 @@ export const supportPrompt = new PromptTemplate({
 
     Sempre responda saudações ou agradecimentos cordialmente.
 
+    Jamais peça dados pessoais do usuário.
+
     Use o conteúdo das respostas comuns abaixo para responder a pergunta do usuário.
     Se a resposta não for encontrada nas respostas comuns ou não estiver relacionado ao assunto das respostas comuns, responda simplesmente "Infelizmente não sei a resposta, por favor entre em contato com nosso time pelo e-mail oi@rocketseat.com.br para um suporte personalizado. 💜".
 
