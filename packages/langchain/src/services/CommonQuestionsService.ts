@@ -26,10 +26,50 @@ export class CommonQuestionsService {
     })
   }
 
+  async getQuestions({
+    limit = 10,
+    offset,
+    filter,
+  }: {
+    limit: number
+    offset?: string
+    filter?: string
+  }) {
+    const response = await this.qdrantVectorStore.client.scroll(
+      this.collectionName,
+      {
+        with_vector: false,
+        with_payload: true,
+        offset,
+        limit,
+        filter: filter
+          ? {
+              should: [
+                {
+                  key: 'metadata.title',
+                  match: {
+                    text: filter,
+                  },
+                },
+                {
+                  key: 'metadata.answer',
+                  match: {
+                    text: filter,
+                  },
+                },
+              ],
+            }
+          : undefined,
+      },
+    )
+
+    return response
+  }
+
   async addQuestions(questions: Question[]) {
     const documents = questions.map((question) => {
       return new Document({
-        pageContent: `${question.title} ${question.answer}`,
+        pageContent: question.answer,
         metadata: {
           id: question.id,
           title: question.title,

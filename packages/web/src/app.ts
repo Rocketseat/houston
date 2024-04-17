@@ -12,6 +12,8 @@ import { webhooks } from './controllers/webhooks'
 
 import { verifyJWTMiddleware } from './middlewares/verify-jwt'
 import { rateLimitMiddleware } from './middlewares/ratelimit'
+import { faqController } from './controllers/faq'
+import { verifyRetoolMiddleware } from './middlewares/verify-retool-middleware'
 
 export const app = new Hono<HoustonApp>().basePath('/api')
 
@@ -30,6 +32,7 @@ app.use(
 app.notFound((c) => c.json({ error: 'Not Found' }, 404))
 
 app.route('/webhooks', webhooks)
+app.route('/', verifyRetoolMiddleware).route('/faq', faqController)
 
 const routes = app
   .route('/', verifyJWTMiddleware)
