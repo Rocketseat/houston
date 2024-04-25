@@ -10,9 +10,12 @@ import {
 } from '@rocketseat/houston-contracts'
 import { Hono } from 'hono'
 import { HoustonApp } from '../types'
+import { verifyRetoolMiddleware } from '../middlewares/verify-retool-middleware'
 
 const commonQuestionsService = new CommonQuestionsService()
 export const faqController = new Hono<HoustonApp>()
+
+faqController.route('/', verifyRetoolMiddleware)
 
 faqController.get('/', zValidator('query', getQuestionsParams), async (c) => {
   const { limit = 10, cursorId, q } = c.req.valid('query')

@@ -32,7 +32,7 @@ app.use(
 app.notFound((c) => c.json({ error: 'Not Found' }, 404))
 
 app.route('/webhooks', webhooks)
-app.route('/', verifyRetoolMiddleware).route('/faq', faqController)
+app.route('/faq', faqController)
 
 const routes = app
   .route('/', verifyJWTMiddleware)
